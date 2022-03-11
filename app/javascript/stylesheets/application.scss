@@ -1,0 +1,173 @@
+// bootstrap5のために作成
+// cssのカスタマイズ用　assets/stylesheets/custom.scssの内容をコピー
+
+// @import "~bootstrap/scss/bootstrap"; bootstrap5導入時削除
+// @import "bootstrap-sprockets"　bootstrap5導入時削除;　
+// @import "simple_calendar";　bootstrap5導入時削除
+@import "bootstrap";
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: gray;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 15px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: lightgrey;
+  a {
+    color: lightgrey;
+    &:hover {
+      color: gray;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* カレンダー */
+
+
+td.fc-day-sun {
+  background-color: #fde5e9;
+}
+
+.simple-calendar {
+  
+  .table{
+    table-layout: fixed;
+  }
+
+  // 前月、翌月を非表示（枠は残る）
+  // .prev-month {
+  //   display: none;
+  // }
+  // .next-month {
+  //   display: none;
+  // }
+
+  .wday-0 {
+    background-color: #fde5e9;
+  }
+
+  .wday-6 {
+    background-color: rgb(189, 218, 228);
+  }
+
+  .holiday {
+    background-color: #fde5e9;
+  }
+
+  .day {
+    text-align: center;
+  }
+}
+
+//home display
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.rounded {
+  margin-top: 10px;
+}
