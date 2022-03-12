@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 2022_02_04_151314) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "datetime"
+    t.datetime "start_time"
+    t.date "day"
+    t.time "start"
+    t.time "finish"
     t.integer "user_id", null: false
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false

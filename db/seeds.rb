@@ -18,3 +18,20 @@ User.create!(name:  "Example User",
                  confirmed_at: 1.hour.ago,
                  confirmation_sent_at: Time.zone.now)
   end
+
+  #商品
+  item = [
+      { :name => "駆除", :unit => "㎡", :price => 2600 }, 
+      { :name => "防除", :unit => "㎡", :price => 2600 },
+      { :name => "換気扇", :unit => "台", :price => 70000 },
+      { :name => "かわい太郎", :unit => "坪", :price => 15000 }
+    ]
+  item.each do |item|
+    Item.create(name: item[:name], unit: item[:unit], price: item[:price])
+  end
+
+  #取扱経路
+  route = [ "農協", "直接"]
+  route.each do |route|
+    Route.create(name: route)
+  end

@@ -1,0 +1,58 @@
+<%= form_with model: @event_form, url: events_path, local: true do |f| %>
+
+    <!-- 顧客情報 --!>
+    <%= f.label :施主名 %>
+    <div class="field">
+        <%= f.label :名字 %>
+        <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+        <%= f.label :名前 %>
+        <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+        <!-- 県、市、町、分けた方がいい？ --!>
+        <%= f.label :住所 %>
+        <%= f.text_field :address %>
+    </div>
+    <div class="field">
+        <%= f.label :電話番号 %>
+        <%= f.text_field :telephone %>
+    </div>
+
+    <!-- 施工予定 -->
+
+    <div class="field">
+        <%= f.label :日付 %>
+        <%= f.date_field :day %>
+    </div>
+    <div class="field">
+        <%= f.label :開始時間 %>
+        <%= f.time_field :start %>
+    </div>
+    <div class="field">
+        <%= f.label :終了時間 %>
+        <%= f.time_field :finish %>
+    </div>
+
+    <!-- 商品 --!>
+    <div class="field">
+        <%= f.label :施工内容 %>
+        <%= f.collection_select :item, Item.all, :id , :name %>
+    </div>
+    <div class="field">
+        <%= f.label :数量 %>
+        <%= f.number_field :number %>
+    </div>
+
+    <!-- 取扱経路 --!>
+    <div class="field">
+        <%= f.label :取扱経路 %>
+        <%= f.collection_select :route, Route.all, :id, :name %>
+    </div>
+
+    <%= f.submit "登録", class: "btn btn-primary"%>
+
+<% end %>
+
+    
