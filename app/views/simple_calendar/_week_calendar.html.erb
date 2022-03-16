@@ -43,7 +43,7 @@
                 <% end %>
 
               <% else %>
-
+              <!-- event表示用 --!>
                 <%= content_tag :td, class: "car#{n}" do %>
                   <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                     <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
@@ -52,7 +52,7 @@
                     <% unless sorted_events.fetch(day, []).select{|e|e.car==n}.blank? %>
                       <% sorted_events.fetch(day, []).select{|e|e.car==n}.each do |event| %>
                         <div class="event">
-                          <%= event.start %>
+                          <%= l event.start, format: :short %>
                         </div>
                       <% end %>
                     <% end %>
