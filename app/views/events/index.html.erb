@@ -1,8 +1,14 @@
 <div>
-    <%= week_calendar do |date| %>
+    <%= week_calendar events: @events do |date, events| %>
         <%= date.day %> 
         (<%= t('date.abbr_day_names')[date.wday] %>) <!-- 曜日名の表示 -->
         <%= holiday_name(date) if holiday_check(date) %> <!-- 祝日なら祝日名を表示 -->
+        <!-- eventの表示 --!>
+        <% events.each do |event| %>
+            <div>
+              <%= event.start %>
+            </div>
+        <% end %>
     <% end %>
 </div>
 <div>

@@ -1,4 +1,6 @@
 <%= form_with model: @event_form, url: events_path, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
 
     <!-- 顧客情報 --!>
     <%= f.label :施主名 %>
@@ -21,24 +23,31 @@
     </div>
 
     <!-- 施工予定 -->
-
+    <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
     <div class="field">
         <%= f.label :日付 %>
-        <%= f.date_field :day %>
+        <%= f.date_field :day, value: Date.today %>
+    </div>
+    <div class="field">
+        <%= f.label :工事車 %>
+        <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]] %>
     </div>
     <div class="field">
         <%= f.label :開始時間 %>
-        <%= f.time_field :start %>
+        <%= f.time_field :start, value: Time.now %>
     </div>
     <div class="field">
         <%= f.label :終了時間 %>
-        <%= f.time_field :finish %>
+        <%= f.time_field :finish, value: Time.now %>
     </div>
+
+    <!-- 営業担当 --!>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
 
     <!-- 商品 --!>
     <div class="field">
         <%= f.label :施工内容 %>
-        <%= f.collection_select :item, Item.all, :id , :name %>
+        <%= f.collection_select :item_id, Item.all, :id , :name %>
     </div>
     <div class="field">
         <%= f.label :数量 %>
@@ -48,7 +57,7 @@
     <!-- 取扱経路 --!>
     <div class="field">
         <%= f.label :取扱経路 %>
-        <%= f.collection_select :route, Route.all, :id, :name %>
+        <%= f.collection_select :route_id, Route.all, :id, :name %>
     </div>
 
     <%= f.submit "登録", class: "btn btn-primary"%>

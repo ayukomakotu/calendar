@@ -1,22 +1,28 @@
 class EventForm
     include ActiveModel::Model
-    attr_accessor :start_time, :day, :start, :finish, :last_name, :first_name, 
-                :address, :telephone, :route_id, :item_id, :number
+    attr_accessor :start_time, :day, :car, :start, :finish, :last_name, :first_name, 
+                :address, :telephone, :user_id, :route_id, :item_id, :number
         
     # validationをひとまとめにする
-    # with_options presence: true do
-    #     validates :day
-    # end
+    with_options presence: true do
+        validates :day
+        validates :start
+        validates :finish
+        validates :last_name
+        validates :first_name
+        validates :address
+        validates :telephone
+        validates :user_id
+        validates :route_id
+        validates :item_id
+        validates :number
+    end
 
     def save
-        if @event_form.valid?
-            customer = Customer.create(last_name: last_name, first_name: first_name, 
-                                    address: address, telephone: telephone)
-            event = Event.create(start_time: start_time, day: day, start: start, finish: finish,
-                                user_id: user_id, customer_id: customer_id)
-            Order.create(number: number, event: event.id, route_id: route_id, item_id: item_id)
-        else
-            render 'events/new'
-        end
+        customer = Customer.create(last_name: last_name, first_name: first_name, 
+                                address: address, telephone: telephone)
+        event = Event.create(start_time: start_time, day: day, start: start, finish: finish,
+                            user_id: user_id, customer_id: customer.id)
+        Order.create(number: number, event_id: event.id, route_id: route_id, item_id: item_id)
     end
 end

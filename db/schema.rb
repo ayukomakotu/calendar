@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_151314) do
   create_table "events", force: :cascade do |t|
     t.datetime "start_time"
     t.date "day"
+    t.integer "car"
     t.time "start"
     t.time "finish"
     t.integer "user_id", null: false

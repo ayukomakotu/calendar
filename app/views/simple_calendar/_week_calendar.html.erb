@@ -10,7 +10,7 @@
       <tr>
         <th width="50">日付</th>
         <% cars.each do |car| %>
-          <th colspan="2"><%= car %></th>
+          <th><%= car %></th>
         <% end %>
       </tr>
     </thead>
@@ -19,17 +19,46 @@
       <% date_range.each_slice(7) do |week| %>
         <% week.each do |day| %>
           <tr>
-            <% 7.times do |n| %>   <!-- 曜日日付を列で表示するため  -->
+            <% 4.times do |n| %>   <!-- 曜日日付を列で表示するため  -->
               <% if n == 0 %>   <!-- 曜日日付を列で表示するため  -->
+
+                <% if holiday_check(day) %><!-- 祝日判定 --!>
+                  <%= content_tag :td, class: [ calendar.td_classes_for(day), "holiday" ] do %>
+                    <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                      <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                    <% else %>
+                      <!-- sorted_eventを削除しeventを表示しない --!>
+                      <% passed_block.call day, [] %>
+                    <% end %>
+                  <% end %>
+                <% else %>
                   <%= content_tag :td, class: calendar.td_classes_for(day) do %>
                     <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                       <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
                     <% else %>
-                      <% passed_block.call day, sorted_events.fetch(day, []) %>
+                      <!-- eventを表示しない --!>
+                      <% passed_block.call day, [] %>
                     <% end %>
                   <% end %>
+                <% end %>
+
               <% else %>
-                <td></td>
+
+                <%= content_tag :td, class: "car#{n}" do %>
+                  <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                    <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                  <% else %>
+                    <!-- select{|e|e.car==n}で施工車ごとのevent表示をする --!>
+                    <% unless sorted_events.fetch(day, []).select{|e|e.car==n}.blank? %>
+                      <% sorted_events.fetch(day, []).select{|e|e.car==n}.each do |event| %>
+                        <div class="event">
+                          <%= event.start %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
               <% end %>
             <% end %>
           </tr>

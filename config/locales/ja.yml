@@ -62,3 +62,22 @@ ja:
     messages:
       not_saved: "%{count}件のエラーが発生しました"
       #countはerror_messages.html.erbで定義
+  activerecord:
+    attributes:
+      event: 
+        start: "開始時間"
+        finish: "終了時間"
+      customer:
+        last_name: "姓"
+        first_name: "名"
+        address: "住所"
+        telephone: "電話番号"
+      order:
+        number: "数量"
+        user_id: "営業担当"
+        route_id: "施工内容"
+        item_id: "取扱経路"
+
+
+    
+

@@ -10,7 +10,7 @@
       <tr>
         <th width="50">日付</th>
         <% cars.each  do |car| %>
-          <th colspan="2"><%= car %></th>
+          <th><%= car %></th>
         <% end %>
       </tr>
     </thead>
@@ -20,7 +20,7 @@
         <% week.each do |day| %>
           
           <tr>
-            <% 7.times do |n| %>   <!-- 曜日日付を列で表示するため  -->
+            <% 4.times do |n| %>   <!-- 曜日日付を列で表示するため  -->
               <% if n == 0 %>  <!-- 曜日日付を列で表示するため  -->
                 <!-- 前月翌月を非表示にする -->
                 <% if calendar.td_classes_for(day).include?("prev-month") || 

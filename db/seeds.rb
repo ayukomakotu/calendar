@@ -19,6 +19,9 @@ User.create!(name:  "Example User",
                  confirmation_sent_at: Time.zone.now)
   end
 
+  #顧客
+  Customer.create(last_name: "こだま", first_name: "太郎", address: "松江市", telephone: "XXXXX")
+
   #商品
   item = [
       { :name => "駆除", :unit => "㎡", :price => 2600 }, 
