@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
-  has_many :orders
+  has_one :orders
   validates :name, uniqueness: true
 end

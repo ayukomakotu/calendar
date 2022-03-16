@@ -52,7 +52,21 @@
                     <% unless sorted_events.fetch(day, []).select{|e|e.car==n}.blank? %>
                       <% sorted_events.fetch(day, []).select{|e|e.car==n}.each do |event| %>
                         <div class="event">
-                          <%= l event.start, format: :short %>
+                          <div class="item">
+                            <% event.orders.each do |order| %>
+                              <%= order.item.name %>
+                              <%= order.number %>
+                              <%= order.item.unit %>
+                            <% end %>
+                          </div>
+                          <div class="customer">
+                            <%= event.customer.last_name %>
+                          </div>
+                          <div class="time">
+                            <%= l event.start, format: :short %>
+                            <%= "-" %>
+                            <%= l event.finish, format: :short %>
+                          </div>
                         </div>
                       <% end %>
                     <% end %>
