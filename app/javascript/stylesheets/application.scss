@@ -178,3 +178,11 @@ td.fc-day-sun {
 .rounded {
   margin-top: 10px;
 }
+
+// event_form用sidebar
+.event_form {
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+}
