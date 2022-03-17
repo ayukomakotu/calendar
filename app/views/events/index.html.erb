@@ -1,14 +1,21 @@
-<div>
-    <%= week_calendar events: @events do |date, events| %>
-        <%= date.day %> 
-        (<%= t('date.abbr_day_names')[date.wday] %>) <!-- 曜日名の表示 -->
-        <%= holiday_name(date) if holiday_check(date) %> <!-- 祝日なら祝日名を表示 -->
-    <% end %>
-</div>
-<div>
-    <%= month_calendar events: @events do |date, events| %>
-        <%= date.day %> 
-        (<%= t('date.abbr_day_names')[date.wday] %>) <!-- 曜日名の表示 -->
-        <%= holiday_name(date) if holiday_check(date) %> <!-- 祝日なら祝日名を表示 -->
-    <% end %>
+<div class="row">
+    <aside class="col-md-4">
+        <h3>施工予定を追加</h3>
+        <%= render "events/form" %>
+    </aside>
+    <div class="col-md-8">
+        <h3>施工予定表</h3>
+        <%= week_calendar events: @events do |date, events| %>
+            <%= date.day %> 
+            (<%= t('date.abbr_day_names')[date.wday] %>) <!-- 曜日名の表示 -->
+            <%= holiday_name(date) if holiday_check(date) %> <!-- 祝日なら祝日名を表示 -->
+        <% end %>
+    </div>
+    <div>
+        <%= month_calendar events: @events do |date, events| %>
+            <%= date.day %> 
+            (<%= t('date.abbr_day_names')[date.wday] %>) <!-- 曜日名の表示 -->
+            <%= holiday_name(date) if holiday_check(date) %> <!-- 祝日なら祝日名を表示 -->
+        <% end %>
+    </div>
 </div>
