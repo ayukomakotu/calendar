@@ -61,6 +61,10 @@
                           </div>
                           <div class="customer">
                             <%= event.customer.last_name %>
+                            　営業:<%= event.user.name %>
+                          </div>
+                          <div class="place">
+                            <%= event.customer.address %>
                           </div>
                           <div class="time">
                             <%= l event.start, format: :short %>

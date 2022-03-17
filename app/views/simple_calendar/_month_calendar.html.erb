@@ -34,7 +34,8 @@
                     <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                       <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
                     <% else %>
-                      <% passed_block.call day, sorted_events.fetch(day, []) %>
+                      <!-- sorted_eventを削除しeventを表示しない --!>
+                      <% passed_block.call day, [] %>
                     <% end %>
                   <% end %>
                 <% else %>
@@ -42,12 +43,47 @@
                     <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                       <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
                     <% else %>
-                      <% passed_block.call day, sorted_events.fetch(day, []) %>
+                      <!-- sorted_eventを削除しeventを表示しない --!>
+                      <% passed_block.call day, [] %>
                     <% end %>
                   <% end %>
                 <% end %>
               <% else %>
-                <td></td>
+
+                <!-- event表示用 --!>
+                <%= content_tag :td, class: "car#{n}" do %>
+                  <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                    <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                  <% else %>
+                    <!-- select{|e|e.car==n}で施工車ごとのevent表示をする --!>
+                    <% unless sorted_events.fetch(day, []).select{|e|e.car==n}.blank? %>
+                      <% sorted_events.fetch(day, []).select{|e|e.car==n}.each do |event| %>
+                        <div class="event">
+                          <div class="item">
+                            <% event.orders.each do |order| %>
+                              <%= order.item.name %>
+                              <%= order.number %>
+                              <%= order.item.unit %>
+                            <% end %>
+                          </div>
+                          <div class="customer">
+                            <%= event.customer.last_name %>
+                            　営業:<%= event.user.name %>
+                          </div>
+                          <div class="place">
+                            <%= event.customer.address %>
+                          </div>
+                          <div class="time">
+                            <%= l event.start, format: :short %>
+                            <%= "-" %>
+                            <%= l event.finish, format: :short %>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
               <% end %>
             <% end %>
           <% end %>

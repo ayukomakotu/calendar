@@ -5,10 +5,10 @@ class EventForm
         
     # validationをひとまとめにする
     with_options presence: true do
-        validates :day
         validates :start
         validates :finish
         validates :last_name
+        validates :car
         validates :first_name
         validates :address
         validates :telephone
@@ -21,7 +21,7 @@ class EventForm
     def save
         customer = Customer.create(last_name: last_name, first_name: first_name, 
                                 address: address, telephone: telephone)
-        event = Event.create(start_time: start_time, day: day, start: start, finish: finish,
+        event = Event.create(start_time: start_time, start: start, finish: finish, car: car,
                             user_id: user_id, customer_id: customer.id)
         Order.create(number: number, event_id: event.id, route_id: route_id, item_id: item_id)
     end
