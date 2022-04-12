@@ -186,3 +186,12 @@ td.fc-day-sun {
   position: sticky;
   top: 0;
 }
+
+// 見込み管理表
+.appoint {
+  display: flex;
+  .detail {
+    display: inline-block;
+  }
+  
+}

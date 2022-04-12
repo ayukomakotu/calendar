@@ -1,0 +1,46 @@
+<h1>見込み管理表</h1>
+<h2>
+    <!-- 前日を表示 --!>
+    <%= link_to " << 前日 ", appoints_path(day:@day.prev_day) %>
+
+    <!-- 　日付表示 --!>
+    <%= l @day, format: :long %>
+
+    <!-- 翌日を表示 --!>
+    <%= link_to " 翌日 >>", appoints_path(day:@day.next_day) %>
+</h2>
+<!-- 前日を表示 --!>
+<h3><%= link_to "前日", appoints_path(day:@day.prev_day) %></h3>
+<!-- 翌日を表示 --!>
+<h3><%= link_to "翌日", appoints_path(day:@day.next_day) %></h3>
+<% @users.each do |user| %>
+    <div><%= user.name %></div>
+    <div class="appoint">
+        <% user.appoints.each do |appoint| %>
+            <table class="table table-bordered border-primary detail">
+                <tr>
+                    <td>
+                        <%= appoint.name %>
+                    </td>
+                    <td>
+                        <%= l appoint.time, format: :short %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <%= appoint.telephone %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= appoint.address %>        
+                    </td>
+                    <td>
+                        <%= appoint.kind %>
+                    </td>
+                </tr>
+            </table>
+        <% end %>
+    </div>
+<% end %>
+

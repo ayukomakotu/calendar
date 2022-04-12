@@ -8,6 +8,7 @@ class CreateAppoints < ActiveRecord::Migration[6.1]
       t.time :time
       t.string :kind
       t.string :result
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
