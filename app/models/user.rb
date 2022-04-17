@@ -14,4 +14,10 @@ class User < ApplicationRecord
   format: { with: VALID_EMAIL_REGEX },
   uniqueness: true
                    
+  def daily_appoint(day)
+    # 特定のユーザーの一日のアポを表示
+    # user.appointsの中からday= :dayの条件を満たすものを探す
+    # "#{day}"だとうまくいかないのでシンボルで変数展開
+    self.appoints.where("day = :day", day: day)
+  end
 end
