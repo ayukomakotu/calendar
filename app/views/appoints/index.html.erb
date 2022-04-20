@@ -10,8 +10,11 @@
     <%= link_to " 翌日 >>", appoints_path(day:@day.next_day) %>
 </h2>
 
+
+<!-- ユーザー毎のその日のアポを表示 --!>
 <% @users.each do |user| %>
     <div><%= user.name %></div>
+    <%= link_to "予定を追加", new_appoint_path %>
     <div class="appoint">
         <% user.daily_appoint(@day).each do |appoint| %>
             <table class="table table-bordered border-primary detail">

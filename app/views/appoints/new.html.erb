@@ -1,0 +1,29 @@
+<%= form_with model: @appoint, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :名前 %>
+    <%= f.text_field :name %>
+
+    <%= f.label :場所 %>
+    <%= f.text_field :address %>
+
+    <%= f.label :電話番号 %>
+    <%= f.text_field :telephone %>
+
+    <%= f.label :日程 %>
+    <%= f.date_field :day, value: Date.today %>
+
+    <%= f.label :時間 %>
+    <%= f.time_field :time %>
+
+    <%= f.label :区分 %>
+    <%= f.text_field :kind %>
+
+    <%= f.label :結果 %>
+    <%= f.text_field :result %>
+
+    <!-- 営業担当 --!>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    <%= f.submit "追加", class: "btn btn-primary"%>
+<% end %>

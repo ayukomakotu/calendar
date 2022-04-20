@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] 
   
   resources :events, only: [:index, :new, :create]
-  resources :appoints, only: :index
+  resources :appoints, only: [:index, :new, :create]
 end

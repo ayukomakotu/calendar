@@ -59,7 +59,10 @@ p {
 
 
 /* header */
-
+.header {
+  // headerとbodyの隙間
+  margin-bottom: 50px;
+}
 #logo {
   float: left;
   margin-right: 10px;
