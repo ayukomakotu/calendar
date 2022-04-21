@@ -10,37 +10,51 @@
     <%= link_to " 翌日 >>", appoints_path(day:@day.next_day) %>
 </h2>
 
-
-<!-- ユーザー毎のその日のアポを表示 --!>
+<!-- ユーザー毎のその日のアポを表示 アポがなければ推進--!>
 <% @users.each do |user| %>
     <div><%= user.name %></div>
-    <%= link_to "予定を追加", new_appoint_path %>
-    <div class="appoint">
-        <% user.daily_appoint(@day).each do |appoint| %>
-            <table class="table table-bordered border-primary detail">
-                <tr>
-                    <td>
-                        <%= appoint.name %>
-                    </td>
-                    <td>
-                        <%= l appoint.time, format: :short %>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <%= appoint.telephone %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= appoint.address %>        
-                    </td>
-                    <td>
-                        <%= appoint.kind %>
-                    </td>
-                </tr>
-            </table>
-        <% end %>
-    </div>
+    <% if user.appoints.blank? %>
+        <%= link_to "予定を追加", new_appoint_path %>
+        推進
+    <% else %>
+        <%= link_to "予定を追加", new_appoint_path %>
+        <div class="appoint">
+            <% user.daily_appoint(@day).each do |appoint| %>
+                <table class="table table-bordered border-primary detail">
+                    <tr>
+                        <td>
+                            <%= appoint.name %>
+                        </td>
+                        <td>
+                            <%= l appoint.time, format: :short %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <%= appoint.telephone %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= appoint.address %>        
+                        </td>
+                        <td>
+                            <%= appoint.kind %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <% if appoint.result %>
+                                <div>結果：　<%= appoint.result %></div> 
+                                <%= link_to "結果報告を変更", edit_appoint_path(appoint) %>
+                            <% else %>
+                                <%= link_to "結果報告", edit_appoint_path(appoint) %>
+                            <% end %>
+                        </td>
+                    </tr>
+                </table>
+            <% end %>
+        </div>
+    <% end %>
 <% end %>
 

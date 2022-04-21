@@ -19,9 +19,23 @@ class AppointsController < ApplicationController
         end
     end
 
+    def edit
+        @appoint = Appoint.find(params[:id])
+    end
+
+    def update
+        @appoint = Appoint.find(params[:id])
+        if @appoint.update(appoint_params)
+            flash[:success] = "調査内容を変更しました"
+            redirect_to appoints_path
+        else
+            render 'edit'
+        end
+    end
+
     private
         def appoint_params
             params.require(:appoint).permit(:name, :address, :telephone,
-                    :day, :time, :kind, :result, :user_id)
+                    :day, :time, :kind, :user_id)
         end
 end

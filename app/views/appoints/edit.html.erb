@@ -1,5 +1,5 @@
 <!-- ボタンに表示させたいテキストをprovideメソッドでわたす--!>
-<% provide(:button_text, '追加') %>
+<% provide(:button_text, '変更') %>
 <!-- 日程の初期設定を当日にする --!>
-<% provide(:day_value, Date.today) %>
+<% provide(:day_value, @appoint.day) %>
 <%= render 'appoint_form' %>
