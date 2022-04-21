@@ -1,0 +1,21 @@
+<% provide(:button_text, '選択') %>
+<%= form_with model: @appoint, local: true, method: :patch do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <!-- result以外は更新しないのでhidden_field --!>
+    <%= f.hidden_field :name, :value => @appoint.name %>
+    <%= f.hidden_field :address, :value => @appoint.address %>
+    <%= f.hidden_field :telephone, :value => @appoint.telephone %>
+    <%= f.hidden_field :day, :value => @appoint.day %>
+    <%= f.hidden_field :time, :value => @appoint.time %>
+    <%= f.hidden_field :kind, :value => @appoint.kind %>
+
+    <!-- 営業担当 --!>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    <%= f.label :結果 %>
+    <%= f.select( :result, [["否決"],["再訪"],["受注"],["キャンセル"],["延期"]]) %>
+
+    <!-- provideメソッドで渡されたテキストをボタンに反映 --!>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

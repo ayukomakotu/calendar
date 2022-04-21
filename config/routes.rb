@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   
   resources :events, only: [:index, :new, :create]
   resources :appoints
+  # 調査結果変更用
+  resources :appoints do
+    member do
+      get :edit_result
+    end
+  end
 end

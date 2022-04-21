@@ -46,9 +46,9 @@
                         <td colspan="2">
                             <% if appoint.result %>
                                 <div>結果：　<%= appoint.result %></div> 
-                                <%= link_to "結果報告を変更", edit_appoint_path(appoint) %>
+                                <%= link_to "結果報告を変更", edit_result_appoint_path(appoint) %>
                             <% else %>
-                                <%= link_to "結果報告", edit_appoint_path(appoint) %>
+                                <%= link_to "結果報告", edit_result_appoint_path(appoint) %>
                             <% end %>
                         </td>
                     </tr>

@@ -27,15 +27,20 @@ class AppointsController < ApplicationController
         @appoint = Appoint.find(params[:id])
         if @appoint.update(appoint_params)
             flash[:success] = "調査内容を変更しました"
-            redirect_to appoints_path
+            # 変更したアポが表示されている日のページに戻す
+            redirect_to appoints_path(day: @appoint.day)
         else
             render 'edit'
         end
     end
 
+    def edit_result
+        @appoint = Appoint.find(params[:id])
+    end
+
     private
         def appoint_params
             params.require(:appoint).permit(:name, :address, :telephone,
-                    :day, :time, :kind, :user_id)
+                    :day, :time, :kind, :result, :user_id)
         end
 end
