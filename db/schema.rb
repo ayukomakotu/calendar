@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "start_time"
-    t.date "day"
     t.integer "car"
     t.time "start"
     t.time "finish"
@@ -60,6 +59,9 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "number"
+    t.integer "price"
+    t.date "day"
+    t.integer "user_id", null: false
     t.integer "event_id", null: false
     t.integer "route_id", null: false
     t.integer "item_id", null: false
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
     t.index ["event_id"], name: "index_orders_on_event_id"
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["route_id"], name: "index_orders_on_route_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -101,4 +104,5 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
   add_foreign_key "orders", "events"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "routes"
+  add_foreign_key "orders", "users"
 end

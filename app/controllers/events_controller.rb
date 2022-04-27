@@ -13,15 +13,20 @@ class EventsController < ApplicationController
     @event_form = EventForm.new(event_form_params)
     if @event_form.valid?
       @event_form.save
+      flash[:success] = "施工予定を追加しました"
       redirect_to events_path
     else
       render 'events/new'
     end
   end
 
+  def achievements
+    @users = User.all
+  end
+
   private
     def event_form_params
       params.require(:event_form).permit(:start_time, :day, :start, :finish, :car, :last_name, :first_name, 
-                        :address, :telephone, :user_id, :route_id, :item_id, :number)
+                        :address, :telephone, :user_id, :route_id, :item_id, :number, :price)
     end
 end

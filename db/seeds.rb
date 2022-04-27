@@ -39,6 +39,14 @@ User.create!(name:  "こだま",
     Route.create(name: route)
   end
 
+  #施工予定
+  Event.create(start_time: DateTime.now, car: 1, start: Time.local(2022,4,25,9,0,0),
+                    finish: Time.local(2022,4,25,11,0,0), user_id: 1, customer_id: 1)
+
+  #商品
+  Order.create(number: 100, price: 260000, day: Date.today, user_id: 1, event_id: 1,
+                route_id: 1, item_id: 1)
+
   #見込み
   appoint = [
       { :name => "鈴木", :address => "松江", :telephone => "xxx-xxxx", :day => Date.today,

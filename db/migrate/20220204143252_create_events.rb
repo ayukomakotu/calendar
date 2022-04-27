@@ -2,7 +2,6 @@ class CreateEvents < ActiveRecord::Migration[6.1]
   def change
     create_table :events do |t|
       t.datetime :start_time
-      t.date :day
       t.integer :car
       t.time :start
       t.time :finish

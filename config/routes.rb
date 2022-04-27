@@ -18,6 +18,14 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] 
   
   resources :events, only: [:index, :new, :create]
+  
+  # 実績一覧
+  resources :events do
+    collection do 
+      get :achievements
+    end
+  end
+
   resources :appoints
   # 調査結果変更用
   resources :appoints do
@@ -25,4 +33,5 @@ Rails.application.routes.draw do
       get :edit_result
     end
   end
+
 end
