@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_092038) do
+ActiveRecord::Schema.define(version: 2022_06_25_002153) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "appoints", force: :cascade do |t|
     t.string "name"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
     t.time "time"
     t.string "kind"
     t.string "result"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_appoints_on_user_id"
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
     t.integer "car"
     t.time "start"
     t.time "finish"
-    t.integer "user_id", null: false
-    t.integer "customer_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_events_on_customer_id"
@@ -61,10 +64,10 @@ ActiveRecord::Schema.define(version: 2022_03_19_092038) do
     t.integer "number"
     t.integer "price"
     t.date "day"
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
-    t.integer "route_id", null: false
-    t.integer "item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "route_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_orders_on_event_id"
