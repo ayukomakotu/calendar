@@ -70,13 +70,13 @@ Rails.application.configure do
 
   # メール設定
   config.action_mailer.default_url_options = { protocol: 'https', host: 'https://kodama-calendar.herokuapp.com' }
-  Rails.application.routes.default_url_options[:host] = 'https://kodama-calendar.herokuapp.com'
+  # Rails.application.routes.default_url_options[:host] = 'https://kodama-calendar.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
     address: "smtp.gmail.com",
     port: 587,
-    domain: 'smtp.gmail.com',
+    domain: 'gmail.com',
     user_name: ENV['WELCOME_MAILER_ADDRESS'], #gmailアドレス
     password: ENV['WELCOME_MAILER_PASSWORD'], #gmailパスワード
     authentication: 'login'
