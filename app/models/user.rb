@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :events
-  has_many :appoints
-  has_many :orders
+  # has_many :events
+  # has_many :appoints
+  # has_many :orders
   # has_many :orders,               through: :events,
   #                                  source: :orders
   # Include default devise modules. Others available are:
@@ -33,3 +33,4 @@ class User < ApplicationRecord
     self.orders.where(day: Date.parse(date.to_s).all_month).map(&:price).sum
   end
 end
+

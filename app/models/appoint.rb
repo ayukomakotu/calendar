@@ -1,5 +1,5 @@
 class Appoint < ApplicationRecord
-    belongs_to :user
+    # belongs_to :user
     validates :name, presence: true
     validates :address, presence: true
     validates :telephone, presence: true
