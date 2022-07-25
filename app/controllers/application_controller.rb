@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+    include SessionsHelper
+
     #ログイン後の遷移先を指定
     def after_sign_in_path_for(resource)
         home_path

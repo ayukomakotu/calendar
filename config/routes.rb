@@ -4,16 +4,9 @@ Rails.application.routes.draw do
   get 'events/index'
   get '/home', to:'static_pages#home' 
 
-  devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations',
-    confirmations: 'users/confirmations'
-  }
-
-  devise_scope :user do
-    root "users/sessions#new"
-  end
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
   resources :users, only: [:index, :show] 
   
