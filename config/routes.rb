@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  root to: 'sessions#new'
   get '/help', to:'static_pages#help'
   get 'events/index'
   get '/home', to:'static_pages#home' 
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
   
   resources :events, only: [:index, :new, :create]
   
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
   # 実績一覧
   resources :events do
     collection do 
