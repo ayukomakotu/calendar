@@ -21,13 +21,9 @@
                         <%= link_to "マイページ", current_user, 
                                     class: "dropdown-item" %>
                     </li>
-                    <li>
-                        <%= link_to "設定", edit_user_registration_path(current_user),
-                                    class: "dropdown-item" %>
-                    </li>
                     <li class="divider"></li>
                     <li> 
-                        <%= button_to "ログアウト", destroy_user_session_path, class: "dropdown-item", method: :delete %> 
+                        <%= button_to "ログアウト", logout_path, class: "dropdown-item", method: :delete %> 
                     </li>
                 </ul>
             </li>
