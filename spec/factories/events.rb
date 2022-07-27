@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :event do
-    datetime { "2022-02-04 23:32:52" }
-    association :user,     factory: :michael
-    association :customer, factory: :customer
+    start_time { DateTime.now }
+    car        { 1 }
+    start      { Time.local(2022,4,25,9,0,0) }
+    finish     { Time.local(2022,4,25,11,0,0) }
   end
 end
