@@ -74,4 +74,10 @@ RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test
   end
+
+  # テストユーザーとしてログインする
+  def log_in_as(user)
+    post login_path, params: { session: { number: user.number,
+                                          password: user.password } }
+  end
 end
