@@ -45,7 +45,7 @@ RSpec.describe "Appoints", type: :request do
   describe "PATCH /update" do
     it "リクエストが成功するか" do
       log_in_as(user1)
-      patch appoint_path(user1), params: {appoint: {name: "update_example",
+      patch appoint_path(appoint1), params: {appoint: {name: "update_example",
                                           address: "test_example",
                                           telephone: "xxx-xxxx-xxxx",
                                           day: Date.today,
