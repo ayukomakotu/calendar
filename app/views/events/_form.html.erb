@@ -45,16 +45,19 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
     <!-- 商品 --!>
+    
     <div class="field">
         <%= f.label :施工内容 %>
         <%= f.collection_select :item_id, Item.all, :id , :name %>
     </div>
+
     <div class="field">
         <%= f.label :数量 %>
         <%= f.number_field :number %>
     </div>
+
     <div class="field">
-        <%= f.label :施主金額 %>
+        <%= f.label :金額 %>
         <%= f.number_field :price %>
     </div>
 
