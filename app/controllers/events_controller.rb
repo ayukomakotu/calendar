@@ -16,7 +16,7 @@ class EventsController < ApplicationController
       flash[:success] = "施工予定を追加しました"
       redirect_to events_path
     else
-      render 'events/new'
+      render 'new'
     end
   end
 
