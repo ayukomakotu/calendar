@@ -5,7 +5,7 @@ User.create!(name:  "こだま",
              password_confirmation: "password")
 
 # 追加のユーザーをまとめて生成する
-10.times do |n|
+30.times do |n|
     name  = Faker::Name.name + "#{n}"
     number = n
     password = "password"

@@ -22,7 +22,7 @@ gem 'jbuilder'
 gem 'bootsnap', require: false
 gem 'rexml'
 gem 'rss'
-gem 'devise'
+# gem 'devise'
 gem 'dotenv-rails'
 gem 'simple_calendar'
 gem 'holiday_japan'

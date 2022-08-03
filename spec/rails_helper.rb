@@ -65,7 +65,7 @@ RSpec.configure do |config|
   #factory_bot記法の省略
   require 'capybara/rspec'
   #統合テスト用にcapybaraを使うための設定
-  config.include Devise::Test::IntegrationHelpers
+  
 
   # 以下のエラーが発生し、以下の設定を追加
   #Selenium::WebDriver::Error::UnknownError:
@@ -79,5 +79,13 @@ RSpec.configure do |config|
   def log_in_as(user)
     post login_path, params: { session: { number: user.number,
                                           password: user.password } }
+  end
+
+  #テストユーザーとしてログイン（system spec）
+  def log_in_system(user)
+    visit login_path
+    fill_in 'session[number]', with: user.number
+    fill_in 'session[password]', with: user.password
+    click_button 'ログイン'
   end
 end

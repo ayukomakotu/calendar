@@ -5,4 +5,11 @@ FactoryBot.define do
     password { "password" }
     password_confirmation { "password" }
   end
+
+  factory :sample_user, class: User do
+    sequence(:name, "sample_1")
+    sequence(:number, 100)
+    password { "password" }
+    password_confirmation { "password" }
+  end
 end
