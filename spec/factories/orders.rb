@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :order do
     number { 100 }
-    association :event,   factory: :event
-    association :route,   factory: :route
-    association :item,    factory: :item
+    price  { 100000 }
+    day    { "2022-7-7" }
   end
 end

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   root to: 'sessions#new'
   get '/help', to:'static_pages#help'
-  get 'events/index'
   get '/home', to:'static_pages#home' 
 
   get    '/login',   to: 'sessions#new'
