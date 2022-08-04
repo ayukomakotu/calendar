@@ -71,9 +71,9 @@ RSpec.configure do |config|
   #Selenium::WebDriver::Error::UnknownError:
   # unknown error: Cannot construct KeyEvent from non-typeable key
   # (Session info: chrome=98.0.4758.80)
-  config.before(:each, type: :system) do
-    driven_by :rack_test
-  end
+  # config.before(:each, type: :system) do
+  #   driven_by :rack_test
+  # end
 
   # テストユーザーとしてログインする
   def log_in_as(user)
