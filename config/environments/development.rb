@@ -84,4 +84,6 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  # cors どのオリジンからもアクセスを許可する　rspec　system_spec上でなぜかログインできなくなることの対策
+  config.allow_origins = ['https://allow_origin_url.co.jp', 'https://second_allow_origins_url.com']
 end

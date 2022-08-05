@@ -26,6 +26,8 @@ gem 'rss'
 gem 'dotenv-rails'
 gem 'simple_calendar'
 gem 'holiday_japan'
+# rspecが不安定でたまにログインできずに落ちるバグを解消するのにAccess-Control-Allow-Origin.の設定が必要だったため追加
+gem 'rack-cors'
 
 group :development, :test do
   # gem 'sqlite3'
@@ -48,6 +50,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'launchy'
 end
 
 group :production do

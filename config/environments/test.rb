@@ -70,4 +70,6 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  # cors どのオリジンからもアクセスを許可する　rspec　system_spec上でなぜかログインできなくなることの対策
+  config.allow_origins = ['https://allow_origin_url.co.jp', 'https://second_allow_origins_url.com']
 end
