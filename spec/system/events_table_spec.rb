@@ -5,7 +5,6 @@ RSpec.describe "Event", type: :system do
     let!(:user1)  { FactoryBot.create(:user1) }
     let!(:item)   { FactoryBot.create(:item) }
     let!(:route)  { FactoryBot.create(:route) }
-    
     it "非ログイン状態でログイン画面に戻される, ログイン後リダイレクトするか" do
         visit events_path
         visit current_path
@@ -49,5 +48,16 @@ RSpec.describe "Event", type: :system do
         expect(page).to have_content item.unit
         expect(page).to have_content "1000000"
         expect(page).to have_content "09:00 - 11:00"
+    end
+
+    it "施工予定表の月表示、週表示 前月翌月前週翌週へのリンク" do
+        visit login_path
+        visit current_path
+        fill_in 'session[number]', with: 1000
+        fill_in 'session[password]', with: "password"
+        click_button 'ログイン'
+        visit events_path 
+        expect(page).to have_content "#{Date.today.year}年 #{Date.today.month}月"
+
     end
 end
