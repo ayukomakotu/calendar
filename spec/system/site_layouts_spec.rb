@@ -30,6 +30,7 @@ it "headerリンクが正しいか" do
 
   it "home画面のリンクは正しいか" do
     visit login_path
+    visit current_path
     fill_in 'session[number]', with: 1000
     fill_in 'session[password]', with: "password"
     click_button 'ログイン'
