@@ -14,25 +14,32 @@ RSpec.describe "Event", type: :system do
 
     it "施工予定の追加ができるか、施工予定表の表示は正しいか" do
         visit login_path
-        visit current_path
+        visit current_path #挙動がおかしくなるのでリロード
+        #ログインする
         fill_in 'session[number]', with: 1000
         fill_in 'session[password]', with: "password"
         click_button 'ログイン'
+        visit current_path #挙動がおかしくなるのでリロード
+
         visit events_path
+        #formに値を入力して送信
         fill_in "event_form[last_name]", with: "sample_last_name"
         fill_in "event_form[first_name]", with: "sample_first_name"
         fill_in "event_form[address]", with: "sample_address"
         fill_in "event_form[telephone]", with: "sample_telephone"
         fill_in "event_form[start_time]", with: Date.today
-        select "1号車", from: "工事車"
+        select "１号車", from: "event_form_car" #セレクトボックスのidを指定
         fill_in "event_form[start]", with: "2022-08-05 09:00:00 +0900"
-        fill_in "event_form[finish]", with: "2022-08-05 11:00:00 +0900"
-        fill_in "event_form[item_id]", with: item.id
-        fill_in "event_form[number]", with: 100
-        fill_in "event_form[price]", with: 1000000
-        fill_in "event_form[route_id]", with: route.id
+        fill_in "event_form[finish]", with: "2022-08-05 09:00:00 +0900"
+        select item.name, from: "event_form_item_id" #セレクトボックスのidを指定
+        fill_in "event_form_number", with: 100
+        fill_in "event_form_price",  with: 1000000
+        select route.name, from: "event_form_route_id" #セレクトボックスのidを指定
         click_button "登録"
+        save_and_open_page
         visit current_path
+
+        #施工予定が追加され、正しく表示されているか
         expect(page).to include "sample_last_name"
         # expect(page).to include "sample_first_name"
         expect(page).to include "sample_address"
