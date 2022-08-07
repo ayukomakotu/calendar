@@ -9,6 +9,11 @@ RSpec.describe "Event", type: :system do
         visit events_path
         visit current_path
         expect(current_path).to eq login_path
+        fill_in 'session[number]', with: 1000
+        fill_in 'session[password]', with: "password"
+        click_button 'ログイン'
+        visit current_path
+        expect(current_path).to eq events_path
     end
 
     it "施工予定の追加ができるか、施工予定表の表示は正しいか" do
@@ -56,8 +61,15 @@ RSpec.describe "Event", type: :system do
         fill_in 'session[number]', with: 1000
         fill_in 'session[password]', with: "password"
         click_button 'ログイン'
+        visit current_path
         visit events_path 
         expect(page).to have_content "#{Date.today.year}年 #{Date.today.month}月"
-
+        # 前週へのリンク
+        expect(page).to have_link "前週", href: "/events?start_date=#{Date.today.prev_week.end_of_week}"
+        # 次週へのリンク
+        expect(page).to have_link "次週", href: "/events?start_date=#{Date.today.next_week}"
+        # simple_calendarの仕様上テストが難しい
+        # expect(page).to have_link "前月", href: "/events?start_date=#{Date.today.prev_month.end_of_month}"
+        # expect(page).to have_link "次月", href: "/events?start_date=#{Date.today.next_month.beginning_of_month}"
     end
 end
