@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Event", type: :system do
+RSpec.describe "EventTable", type: :system do
 
     let!(:user1)  { FactoryBot.create(:user1) }
     let!(:item)   { FactoryBot.create(:item) }

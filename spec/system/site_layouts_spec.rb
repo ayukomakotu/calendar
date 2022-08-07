@@ -12,20 +12,6 @@ it "headerリンクが正しいか" do
     click_link "ヘルプ"
     expect(current_path).to eq help_path  
     expect(page).not_to have_content "アカウント"
-
-    click_on "ログイン"
-    fill_in 'session[number]', with: 1000
-    fill_in 'session[password]', with: "password"
-    click_button 'ログイン'
-    expect(page).not_to have_link "ログイン", href: login_path
-    visit current_path #不安定なので追加
-    find(".dropdown-toggle").click
-    click_on "マイページ"
-    expect(current_path).to eq user_path(user1)
-    visit current_path
-    find(".dropdown-toggle").click
-    click_on "ログアウト"
-    expect(page).to have_content "ログアウトしました"
   end
 
   it "home画面のリンクは正しいか" do
