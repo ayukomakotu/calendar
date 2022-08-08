@@ -19,31 +19,50 @@
     <% else %>
         <%= link_to "予定を追加", new_appoint_path %>
         <div class="appoint">
-            <% user.daily_appoint(@day).each do |appoint| %>
-                <table class="table table-bordered border-primary detail">
-                    <tr>
+            <table class="table table-bordered border-primary detail">
+                <tr>
+                    <% user.daily_appoint(@day).each do |appoint| %>
+                        <th colspan="2">
+                            <%= l appoint.time, format: :short %>
+                        </th>
+                    <% end %>
+                </tr>
+                <tr>
+                    <% user.daily_appoint(@day).each do |appoint| %>
+                        <td>名前</td>
                         <td>
                             <%= appoint.name %>
                         </td>
+                    <% end %>
+                </tr>
+                <tr>
+                    <% user.daily_appoint(@day).each do |appoint| %>
+                        <td>電話番号</td>
                         <td>
-                            <%= l appoint.time, format: :short %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
                             <%= appoint.telephone %>
                         </td>
-                    </tr>
-                    <tr>
+                    <% end %>
+                </tr>
+                <tr>
+                    <% user.daily_appoint(@day).each do |appoint| %>
+                        <td>住所</td>
                         <td>
                             <%= appoint.address %>        
                         </td>
+                    <% end %>
+                </tr>
+                <tr>
+                    <% user.daily_appoint(@day).each do |appoint| %>
+                        <td>区分</td>
                         <td>
                             <%= appoint.kind %>
                         </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
+                    <% end %>
+                </tr>
+                <tr>
+                    <% user.daily_appoint(@day).each do |appoint| %>
+                        <td>結果</td>
+                        <td>
                             <% if appoint.result %>
                                 <div>結果：　<%= appoint.result %></div> 
                                 <%= link_to "結果報告を変更", edit_result_appoint_path(appoint) %>
@@ -51,9 +70,9 @@
                                 <%= link_to "結果報告", edit_result_appoint_path(appoint) %>
                             <% end %>
                         </td>
-                    </tr>
-                </table>
-            <% end %>
+                    <% end %>
+                </tr>
+            </table>
         </div>
     <% end %>
 <% end %>
