@@ -18,8 +18,8 @@
         推進
     <% else %>
         <%= link_to "予定を追加", new_appoint_path %>
-        <div class="appoint">
-            <table class="table table-bordered border-primary detail">
+        <div class="wrap_scroll_table">
+            <table class="scroll_table table-bordered border-primary">
                 <tr>
                     <% user.daily_appoint(@day).each do |appoint| %>
                         <th colspan="2">
@@ -77,3 +77,95 @@
     <% end %>
 <% end %>
 
+<div class="msr_box03">
+  <div class="cell">
+    <div class="ttl">box</div>
+    <div class="table">
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+    </div>
+  </div>
+  <div>
+    <div class="ttl">box</div>
+    <div class="table">
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+        <div class="table_row">
+            <div class="table_cell">
+                名前
+            </div>
+            <div class="table_cell">
+                samplename
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
