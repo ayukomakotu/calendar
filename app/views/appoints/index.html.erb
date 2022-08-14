@@ -77,95 +77,35 @@
     <% end %>
 <% end %>
 
-<div class="msr_box03">
-  <div class="cell">
-    <div class="ttl">box</div>
-    <div class="table">
-        <div class="table_row">
-            <div class="table_cell">
-                名前
+
+<!-- ユーザー毎のその日のアポを表示 アポがなければ推進--!>
+<% @users.each do |user| %>
+<div class="flame">
+    <div class="name"><%= user.name %></div>
+    <%= link_to "予定を追加", new_appoint_path %>
+    <div class="scroll_parallel">
+        <% user.daily_appoint(@day).each do |appoint| %>
+            <div class="appoint">
+                <%= link_to(edit_appoint_path(appoint), class: "box-link") do %>
+                    <div class="detail">
+                        <h3 class="time"><%= l appoint.time, format: :short %> ~ </h3>
+                        <div>
+                            <p>名前: <%= appoint.name %></p>
+                            <p>TEL: <%= appoint.telephone %></p>
+                            <p>住所: <%= appoint.address %></p>
+                            <p>区分: <%= appoint.kind %></p>
+                            <p>結果: <%= appoint.result %></p> 
+                        </div>
+                        <% if appoint.result %>
+                            <%= link_to "結果を変更", edit_result_appoint_path(appoint), class: "btn btn-primary" %>
+                        <% else %>
+                            <%= link_to "結果報告", edit_result_appoint_path(appoint), class: "btn btn-primary" %>
+                        <% end %>
+                    </div>
+                <% end %>
             </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
+        <% end %>
     </div>
-  </div>
-  <div>
-    <div class="ttl">box</div>
-    <div class="table">
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-        <div class="table_row">
-            <div class="table_cell">
-                名前
-            </div>
-            <div class="table_cell">
-                samplename
-            </div>
-        </div>
-    </div>
-  </div>
 </div>
+<% end %>
+
