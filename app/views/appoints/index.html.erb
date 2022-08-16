@@ -10,102 +10,37 @@
     <%= link_to " 翌日 >>", appoints_path(day:@day.next_day) %>
 </h2>
 
-<!-- ユーザー毎のその日のアポを表示 アポがなければ推進--!>
-<% @users.each do |user| %>
-    <div><%= user.name %></div>
-    <% if user.appoints.blank? %>
-        <%= link_to "予定を追加", new_appoint_path %>
-        推進
-    <% else %>
-        <%= link_to "予定を追加", new_appoint_path %>
-        <div class="wrap_scroll_table">
-            <table class="scroll_table table-bordered border-primary">
-                <tr>
-                    <% user.daily_appoint(@day).each do |appoint| %>
-                        <th colspan="2">
-                            <%= l appoint.time, format: :short %>
-                        </th>
-                    <% end %>
-                </tr>
-                <tr>
-                    <% user.daily_appoint(@day).each do |appoint| %>
-                        <td>名前</td>
-                        <td>
-                            <%= appoint.name %>
-                        </td>
-                    <% end %>
-                </tr>
-                <tr>
-                    <% user.daily_appoint(@day).each do |appoint| %>
-                        <td>電話番号</td>
-                        <td>
-                            <%= appoint.telephone %>
-                        </td>
-                    <% end %>
-                </tr>
-                <tr>
-                    <% user.daily_appoint(@day).each do |appoint| %>
-                        <td>住所</td>
-                        <td>
-                            <%= appoint.address %>        
-                        </td>
-                    <% end %>
-                </tr>
-                <tr>
-                    <% user.daily_appoint(@day).each do |appoint| %>
-                        <td>区分</td>
-                        <td>
-                            <%= appoint.kind %>
-                        </td>
-                    <% end %>
-                </tr>
-                <tr>
-                    <% user.daily_appoint(@day).each do |appoint| %>
-                        <td>結果</td>
-                        <td>
-                            <% if appoint.result %>
-                                <div>結果：　<%= appoint.result %></div> 
-                                <%= link_to "結果報告を変更", edit_result_appoint_path(appoint) %>
-                            <% else %>
-                                <%= link_to "結果報告", edit_result_appoint_path(appoint) %>
-                            <% end %>
-                        </td>
-                    <% end %>
-                </tr>
-            </table>
-        </div>
-    <% end %>
-<% end %>
 
 
 <!-- ユーザー毎のその日のアポを表示 アポがなければ推進--!>
-<% @users.each do |user| %>
-<div class="flame">
-    <div class="name"><%= user.name %></div>
-    <%= link_to "予定を追加", new_appoint_path %>
-    <div class="scroll_parallel">
-        <% user.daily_appoint(@day).each do |appoint| %>
-            <div class="appoint">
-                <%= link_to(edit_appoint_path(appoint), class: "box-link") do %>
-                    <div class="detail">
-                        <h3 class="time"><%= l appoint.time, format: :short %> ~ </h3>
-                        <div>
-                            <p>名前: <%= appoint.name %></p>
-                            <p>TEL: <%= appoint.telephone %></p>
-                            <p>住所: <%= appoint.address %></p>
-                            <p>区分: <%= appoint.kind %></p>
-                            <p>結果: <%= appoint.result %></p> 
-                        </div>
-                        <% if appoint.result %>
-                            <%= link_to "結果を変更", edit_result_appoint_path(appoint), class: "btn btn-primary" %>
-                        <% else %>
-                            <%= link_to "結果報告", edit_result_appoint_path(appoint), class: "btn btn-primary" %>
+<div class="appoints">
+    <% @users.each do |user| %>
+        <div class="frame">
+            <div class="name"><%= user.name %></div>
+            <%= link_to "予定を追加", new_appoint_path, class: "new" %>
+            <div class="scroll_parallel">
+                <% user.daily_appoint(@day).each do |appoint| %>
+                    <div class="appoint">
+                        <%= link_to(edit_appoint_path(appoint), class: "box-link") do %>
+                            <div class="detail">
+                                <h3 class="time"><%= l appoint.time, format: :short %> ~ </h3>
+                                <div>
+                                    <p>名前: <%= appoint.name %></p>
+                                    <p>TEL: <%= appoint.telephone %></p>
+                                    <p>住所: <%= appoint.address %></p>
+                                    <p>区分: <%= appoint.kind %></p>
+                                    <p>結果: <%= appoint.result %></p> 
+                                </div>
+                                <% if appoint.result %>
+                                    <%= link_to "結果を変更", edit_result_appoint_path(appoint), class: "btn btn-primary" %>
+                                <% else %>
+                                    <%= link_to "結果報告", edit_result_appoint_path(appoint), class: "btn btn-primary" %>
+                                <% end %>
+                            </div>
                         <% end %>
                     </div>
                 <% end %>
             </div>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>
-<% end %>
-

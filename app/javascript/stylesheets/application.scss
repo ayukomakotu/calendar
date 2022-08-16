@@ -191,12 +191,27 @@ td.fc-day-sun {
 }
 
 
+
+
 // 見込み管理表
-.container {
+.appoints .frame {
   background-color: $gray-medium-light;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.appoints .name {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.appoints .new {
+  padding: 10px;
+  font-weight: bold;
 }
 // 要素を横スクロールさせる
-.scroll_parallel {
+.appoints .scroll_parallel {
   // width: 100%;
   display: flex;
   white-space: nowrap;
@@ -249,6 +264,7 @@ td.fc-day-sun {
   -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
   color: #FFFFFF;
   font-size: 16px;
+  font-weight: bold;
   line-height: 1.6;
   padding: 8px;
   text-decoration: none;
