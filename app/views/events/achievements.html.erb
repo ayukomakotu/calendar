@@ -1,44 +1,42 @@
-実績一覧
-当日受注表
-<table>
-    <tr>
-        <th>
-            名前
-        </th>
-        <th>
-            当日売上
-        </th>
-        <th>
-            月累計
-        </th>
-        <th>
-            営業所月累計
-        </th>
-        <th>
-            営業所目標
-        </th>
-    </tr>
-    <% @users.each do |user| %>
+<div class="achieve">
+    <h1>実績一覧</h1>
+    <h3>当日受注表</h3>
+    <table class="table table-bordered">
         <tr>
-            <td>
-                <%= user.name %>
-            </td>
-            <td>
-                <%= user.today_achievement %>
-            </td>
-            <td>
-                <%= user.monthly_achievement(Date.today) %>
-            </td>
-            <td>
-                user.name
-            </td>
-            <td>
-                user.name
-            </td>
-            <td>
-                user.name
-            </td>
-
+            <th>
+                名前
+            </th>
+            <th>
+                当日売上
+            </th>
+            <th>
+                月累計
+            </th>
+            <th>
+                営業所月累計
+            </th>
+            <th>
+                営業所目標
+            </th>
         </tr>
-    <% end %>
-</table>
+        <% @users.each do |user| %>
+            <tr>
+                <td>
+                    <%= user.name %>
+                </td>
+                <td>
+                    <%= user.today_achievement %>
+                </td>
+                <td>
+                    <%= user.monthly_achievement(Date.today) %>
+                </td>
+                <td>
+                    user.name
+                </td>
+                <td>
+                    user.name
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>
