@@ -1,42 +1,39 @@
 <div class="achieve">
     <h1>実績一覧</h1>
     <h3>当日受注表</h3>
-    <table class="table table-bordered">
-        <tr>
-            <th>
-                名前
-            </th>
-            <th>
-                当日売上
-            </th>
-            <th>
-                月累計
-            </th>
-            <th>
-                営業所月累計
-            </th>
-            <th>
-                営業所目標
-            </th>
-        </tr>
-        <% @users.each do |user| %>
+    <div class="scroll_parallel">
+        <table class="table">
             <tr>
-                <td>
-                    <%= user.name %>
-                </td>
-                <td>
-                    <%= user.today_achievement %>
-                </td>
-                <td>
-                    <%= user.monthly_achievement(Date.today) %>
-                </td>
-                <td>
-                    user.name
-                </td>
-                <td>
-                    user.name
-                </td>
+                <th>名前</th>
+                <th>当日売上</th>
+                <th>月累計</th>
+                <th>目標</th>
+                <th>不足</th>
+                <th>目標達成率</th>
             </tr>
-        <% end %>
-    </table>
+            <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.today_achievement %></td>
+                    <td><%= user.monthly_achievement(Date.today) %></td>
+                    <td>user.name</td>
+                    <td>user.name</td>
+                    <td>user.name</td>
+                </tr>
+            <% end %>
+            <tr>
+                <td>合計</td>
+                <td>
+                    <%= User.all.map{ |user| user.today_achievement }.sum %>
+                </td>
+                <td>
+                    <%= User.all.map{ |user| user.monthly_achievement(Date.today) }.sum %>
+                </td>
+                <td>目標</td>
+                <td>不足</td>
+                <td>目標達成率</td>
+
+            </tr>
+        </table>
+    </div>
 </div>

@@ -280,11 +280,72 @@ td.fc-day-sun {
 
 // 実績一覧
 
-.achieve table {
-  width: 100%;
-  border: black;
+// @media screen and (max-width: 1200px) {
+//   .achieve .scroll_parallel {
+//     // width: 100%;
+//     display: flex;
+//     white-space: nowrap;
+//     overflow-x: scroll;
+//   }
+// }
+.achieve .scroll_parallel {
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 
-.achieve th {
-  background-color: aquamarine;
+.achieve table {
+  border-collapse:separate;
+  border-spacing: 0;
 }
+
+.achieve table th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+.achieve table th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+.achieve table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 15%;
+  padding: 10px 0;
+}
+
+.achieve table td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  width: 15%;
+  padding: 10px 0;
+}
+
+.achieve table tr:nth-child(2n+1) {
+    background: #f1f6fc;
+  }
+  
+
+// .achieve table td:last-child{
+//   border-right: 1px solid #a8b7c5;
+// }
+
+// .achieve table tr:last-child td:first-child {
+//   border-radius: 0 0 0 5px;
+//   background: #f1f6fc;
+// }
+
+// .achieve table tr:last-child td:last-child {
+//   border-radius: 0 0 5px 0;
+// }
+// .achieve th {
+//   background-color: aquamarine;
+// }
