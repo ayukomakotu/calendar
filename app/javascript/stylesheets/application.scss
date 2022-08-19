@@ -280,14 +280,7 @@ td.fc-day-sun {
 
 // 実績一覧
 
-// @media screen and (max-width: 1200px) {
-//   .achieve .scroll_parallel {
-//     // width: 100%;
-//     display: flex;
-//     white-space: nowrap;
-//     overflow-x: scroll;
-//   }
-// }
+
 .achieve .scroll_parallel {
   white-space: nowrap;
   overflow-x: scroll;
@@ -296,6 +289,15 @@ td.fc-day-sun {
 .achieve table {
   border-collapse:separate;
   border-spacing: 0;
+  width: 100%
+}
+
+@media screen and (max-width: 600px) {
+  .achieve table {
+    border-collapse:separate;
+    border-spacing: 0;
+    width: 1000px
+  }
 }
 
 .achieve table th:first-child{
