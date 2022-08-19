@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :office do
-    name { "MyString" }
+  factory :sample_office, class: Office do
+    name { "sample_office" }
   end
 end
