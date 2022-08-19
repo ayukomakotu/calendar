@@ -1,8 +1,12 @@
+# 営業所のサンプル
+Office.create!(name: "松江")
+
 # メインのサンプルユーザーを1人作成する
 User.create!(name:  "こだま",
              number: 100,
              password: "password",
-             password_confirmation: "password")
+             password_confirmation: "password",
+             office_id: 1)
 
 # 追加のユーザーをまとめて生成する
 30.times do |n|
@@ -12,7 +16,8 @@ User.create!(name:  "こだま",
     User.create!(name:  name,
                  number: number,
                  password:              password,
-                 password_confirmation: password)
+                 password_confirmation: password,
+                 office_id: 1)
   end
 
   #顧客
