@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.bigint "user_id"
     t.bigint "office_id"
     t.integer "year"
+    t.integer "all"
     t.integer "tr_3"
     t.integer "tr_4"
     t.integer "tr_5"

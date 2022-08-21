@@ -4,6 +4,7 @@ class CreateTargets < ActiveRecord::Migration[6.1]
       t.references :user, foreign_key: true
       t.references :office, foreign_key: true
       t.integer :year
+      t.integer :all
       t.integer :tr_3
       t.integer :tr_4
       t.integer :tr_5
