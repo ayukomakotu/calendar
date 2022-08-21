@@ -9,6 +9,11 @@ RSpec.describe Office, type: :model do
 
   it "nameが空で無効になるか" do
     sample_office.name = "   "
-    expect(sample_office).to be_valid
+    expect(sample_office).to be_invalid
+  end
+
+  it "nameがuniqueになっているか" do
+    @dup_office = Office.create(name: "sample_office")
+    expect(sample_office).to be_invalid
   end
 end
