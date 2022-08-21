@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_19_132317) do
+ActiveRecord::Schema.define(version: 2022_08_21_072232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,28 @@ ActiveRecord::Schema.define(version: 2022_08_19_132317) do
     t.index ["name"], name: "index_routes_on_name", unique: true
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "office_id"
+    t.integer "year"
+    t.integer "tr_3"
+    t.integer "tr_4"
+    t.integer "tr_5"
+    t.integer "tr_6"
+    t.integer "tr_7"
+    t.integer "tr_8"
+    t.integer "tr_9"
+    t.integer "tr_10"
+    t.integer "tr_11"
+    t.integer "tr_12"
+    t.integer "tr_1"
+    t.integer "tr_2"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["office_id"], name: "index_targets_on_office_id"
+    t.index ["user_id"], name: "index_targets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.integer "number", null: false
@@ -110,5 +132,7 @@ ActiveRecord::Schema.define(version: 2022_08_19_132317) do
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "routes"
   add_foreign_key "orders", "users"
+  add_foreign_key "targets", "offices"
+  add_foreign_key "targets", "users"
   add_foreign_key "users", "offices"
 end
