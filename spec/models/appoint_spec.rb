@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Appoint, type: :model do
-  let!(:user1) { FactoryBot.create(:user1)}
-
+  let!(:sample_office)   { FactoryBot.create(:sample_office)}
+  let!(:user1) { FactoryBot.create(:user1, office_id: sample_office.id)}
   before do
     @appoint = FactoryBot.build(:appoint1, user_id: user1.id)
   end
