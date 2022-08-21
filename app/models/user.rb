@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :orders,               through: :events,
                                    source: :orders
+  belongs_to :office
   validates :name, presence: true,
                    length: { maximum: 50},
                    uniqueness: true
