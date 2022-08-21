@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
 
-  let!(:user1)  { FactoryBot.create(:user1) }
-  let!(:item)   { FactoryBot.create(:item) }
-  let!(:route)  { FactoryBot.create(:route)}
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
+  let!(:item)           { FactoryBot.create(:item) }
+  let!(:route)          { FactoryBot.create(:route)}
   
   describe "GET /index" do
     it "リクエストが成功するか" do

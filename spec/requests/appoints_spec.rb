@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Appoints", type: :request do
 
-  let!(:user1)    { FactoryBot.create(:user1) }
-  let!(:appoint1) { FactoryBot.create(:appoint1, user_id: user1.id)} 
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
+  let!(:appoint1)       { FactoryBot.create(:appoint1, user_id: user1.id)} 
 
   describe "GET /index" do
     it "リクエストが成功するか" do

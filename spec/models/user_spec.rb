@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user1)  { FactoryBot.build(:user1) }
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.build(:user1, office_id: sample_office.id) }
 
   it "userが有効になるか" do
     expect(user1).to be_valid
@@ -30,14 +31,16 @@ RSpec.describe User, type: :model do
   it "nameがuniqueであるか" do
     @dup_user = User.create(name: user1.name, number: 200,
                          password: "password",
-                         password_confirmation: "password")
+                         password_confirmation: "password",
+                         office_id: sample_office.id)
     expect(user1).to be_invalid
   end
 
   it "numberがuniqueであるか" do
     @dup_user = User.create(name: "dup_name", number: user1.number,
                          password: "password",
-                         password_confirmation: "password")
+                         password_confirmation: "password", 
+                         office_id: sample_office.id)
     expect(user1).to be_invalid
   end
 

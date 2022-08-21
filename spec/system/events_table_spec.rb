@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "EventTable", type: :system do
 
-    let!(:user1)  { FactoryBot.create(:user1) }
-    let!(:item)   { FactoryBot.create(:item) }
-    let!(:route)  { FactoryBot.create(:route) }
+    let!(:sample_office)  { FactoryBot.create(:sample_office) }
+    let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
+    let!(:item)           { FactoryBot.create(:item) }
+    let!(:route)          { FactoryBot.create(:route) }
     it "非ログイン状態でログイン画面に戻される, ログイン後リダイレクトするか" do
         visit events_path
         visit current_path

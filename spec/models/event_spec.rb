@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do 
 
-  let!(:user1)     { FactoryBot.create(:user1) }
-  let!(:customer)  { FactoryBot.create(:customer) }
-  let!(:event)     { FactoryBot.create(:event, user_id: user1.id, customer_id: customer.id) }
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
+  let!(:customer)       { FactoryBot.create(:customer) }
+  let!(:event)          { FactoryBot.create(:event, user_id: user1.id, customer_id: customer.id) }
   
   describe 'validation' do
     it 'eventが有効になる' do

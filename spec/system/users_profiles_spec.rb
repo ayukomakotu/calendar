@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "UsersProfiles", type: :system do
   
-  let!(:user1)  { FactoryBot.create(:user1) }
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
 
   it "タイトルは正しいか" do
     visit user_path(user1)

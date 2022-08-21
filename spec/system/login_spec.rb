@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Login", type: :system do
-    let!(:user1) { FactoryBot.create(:user1) }
+    let!(:sample_office)  { FactoryBot.create(:sample_office) }
+    let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
 
     describe "有効な値の場合" do
 

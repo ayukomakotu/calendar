@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "SiteLayouts", type: :system do
 
-  let!(:user1) { FactoryBot.create(:user1) }
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
 
 it "headerリンクが正しいか" do
     # log_in_system(user1) rails_helper内でメソッド化して使うと不安定になるため削除

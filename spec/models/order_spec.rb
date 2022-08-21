@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
 
-  let!(:user1) { FactoryBot.create(:user1)}
-  let!(:item) { FactoryBot.create(:item)}
-  let!(:customer) { FactoryBot.create(:customer)}
-  let!(:route) { FactoryBot.create(:route)}
-  let!(:event) { FactoryBot.create(:event, user_id: user1.id, customer_id: customer.id)}
-  let!(:order) { FactoryBot.build(:order, user: user1, item: item, route: route, event: event)}
+  let!(:sample_office)  { FactoryBot.create(:sample_office) }
+  let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
+  let!(:item)           { FactoryBot.create(:item)}
+  let!(:customer)       { FactoryBot.create(:customer)}
+  let!(:route)          { FactoryBot.create(:route)}
+  let!(:event)          { FactoryBot.create(:event, user_id: user1.id, customer_id: customer.id)}
+  let!(:order)          { FactoryBot.build(:order, user: user1, item: item, route: route, event: event)}
 
   describe "validation" do
     it "orderが有効になる" do
