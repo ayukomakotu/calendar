@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :sample_target, class: Target do
-    year  { 12000000 }
+    year  { 2022 }
+    all   { 12000000 }
     tr_3  { 1000000 }
     tr_4  { 1000000 }
     tr_5  { 1000000 }

@@ -2,7 +2,7 @@
 Office.create!(name: "松江")
 
 # メインのサンプルユーザーを1人作成する
-User.create!(name:  "こだま",
+User.create!(name:  "こだま太郎",
              number: 100,
              password: "password",
              password_confirmation: "password",
@@ -18,6 +18,21 @@ User.create!(name:  "こだま",
                  password:              password,
                  password_confirmation: password,
                  office_id: 1)
+  end
+
+  #目標
+  Target.create(year: 2022, all: 372000000, tr_3:31000000, tr_4: 31000000, tr_5: 31000000,
+                tr_6: 31000000, tr_7: 31000000, tr_8: 31000000, tr_9: 31000000, tr_10: 31000000,
+                tr_11: 31000000, tr_12: 31000000, tr_1: 31000000, tr_2: 31000000, office_id: 1)
+
+  Target.create(year: 2022, all: 12000000, tr_3: 000000, tr_4: 1000000, tr_5: 1000000,
+                tr_6: 1000000, tr_7: 1000000, tr_8: 1000000, tr_9: 1000000, tr_10: 1000000,
+                tr_11: 1000000, tr_12: 1000000, tr_1: 1000000, tr_2: 1000000, user_id: 1)
+
+  (2..31).each do |n|
+      Target.create(year: 2022, all: 12000000, tr_3: 000000, tr_4: 1000000, tr_5: 1000000,
+                tr_6: 1000000, tr_7: 1000000, tr_8: 1000000, tr_9: 1000000, tr_10: 1000000,
+                tr_11: 1000000, tr_12: 1000000, tr_1: 1000000, tr_2: 1000000, user_id: n)
   end
 
   #顧客

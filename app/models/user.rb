@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :orders,               through: :events,
                                    source: :orders
+  has_many :targets                                   
   belongs_to :office
   validates :name, presence: true,
                    length: { maximum: 50},
@@ -63,5 +64,13 @@ class User < ApplicationRecord
   def monthly_achievement(date)
     self.orders.where(day: Date.parse(date.to_s).all_month).map(&:price).sum
   end
+
+  #月目標
+  def monthly_target(year, month)
+    Target.find_by(user_id: self.id, year: year).attributes["tr_#{month}"]
+  end
+
+  # #月実績不足分
+  # def monthly_short(year, month)
 end
 
