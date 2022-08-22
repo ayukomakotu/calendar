@@ -1,5 +1,9 @@
 <div class="achieve">
     <h1>実績一覧</h1>
+    <% @offices.each do |office| %>
+        <%= link_to "#{office.name}", achievements_events_path(office: office.id) %>
+    <% end %>
+    <h2><%= @office.name %>営業所</h2>
     <h3>当日受注表</h3>
     <div class="scroll_parallel">
         <table class="table">
@@ -17,25 +21,25 @@
                     <td><%= user.today_achievement %></td>
                     <td><%= user.monthly_achievement(Date.today) %></td>
                     <td><%= user.monthly_target(Date.today.year, Date.today.month) %></td>
-                    <td><%= user.monthly_achievement(Date.today) - user.monthly_target(Date.today.year, Date.today.month) %></td>
-                    <td><%= (user.monthly_achievement(Date.today).to_f/user.monthly_target(Date.today.year, Date.today.month).to_f) * 100 %>%</td>
+                    <td><%= user.monthly_short(Date.today, Date.today.year, Date.today.month) %></td>
+                    <td><%= user.monthly_rate(Date.today, Date.today.year, Date.today.month) %>%</td>
                 </tr>
             <% end %>
             <tr>
                 <td>全体</td>
                 <td>
-                    <%= User.all.map{ |user| user.today_achievement }.sum %>
+                    <%= @users.map{ |user| user.today_achievement }.sum %>
                 </td>
                 <td>
-                    <%= User.all.map{ |user| user.monthly_achievement(Date.today) }.sum %>
+                    <%= @users.map{ |user| user.monthly_achievement(Date.today) }.sum %>
                 </td>
                 <td><%= Target.find_by(office_id: 1, year: 2022).attributes["tr_#{Date.today.month}"] %></td>
                 <td>
-                    <%= User.all.map{ |user| user.monthly_achievement(Date.today) }.sum -
+                    <%= @users.map{ |user| user.monthly_achievement(Date.today) }.sum -
                         Target.find_by(office_id: 1, year: 2022).attributes["tr_#{Date.today.month}"] %>
                 </td>
                 <td>
-                    <%= (User.all.map{ |user| user.monthly_achievement(Date.today) }.sum.to_f /
+                    <%= (@users.map{ |user| user.monthly_achievement(Date.today) }.sum.to_f /
                     Target.find_by(office_id: 1, year: 2022).attributes["tr_#{Date.today.month}"]).floor(3) * 100 %>%
                 </td>
 

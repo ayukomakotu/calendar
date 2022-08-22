@@ -67,10 +67,18 @@ class User < ApplicationRecord
 
   #月目標
   def monthly_target(year, month)
+    #attributesでカラムとその値をhashで取得
     Target.find_by(user_id: self.id, year: year).attributes["tr_#{month}"]
   end
 
-  # #月実績不足分
-  # def monthly_short(year, month)
+  #月実績不足分
+  def monthly_short(date, year, month)
+    self.monthly_achievement(date) - self.monthly_target(year, month)
+  end
+
+  #達成率
+  def monthly_rate(date, year, month)
+    (self.monthly_achievement(date).to_f / self.monthly_target(year, month).to_f) * 100
+  end
 end
 

@@ -1,5 +1,7 @@
 # 営業所のサンプル
 Office.create!(name: "松江")
+Office.create!(name: "出雲")
+
 
 # メインのサンプルユーザーを1人作成する
 User.create!(name:  "こだま太郎",
@@ -9,7 +11,7 @@ User.create!(name:  "こだま太郎",
              office_id: 1)
 
 # 追加のユーザーをまとめて生成する
-30.times do |n|
+15.times do |n|
     name  = Faker::Name.name + "#{n}"
     number = n
     password = "password"
@@ -18,7 +20,18 @@ User.create!(name:  "こだま太郎",
                  password:              password,
                  password_confirmation: password,
                  office_id: 1)
-  end
+end
+
+15.times do |n|
+    name  = Faker::Name.name + "#{n}"
+    number = n + 15
+    password = "password"
+    User.create!(name:  name,
+                 number: number,
+                 password:              password,
+                 password_confirmation: password,
+                 office_id: 2)
+end
 
   #目標
   Target.create(year: 2022, all: 372000000, tr_3:31000000, tr_4: 31000000, tr_5: 31000000,
