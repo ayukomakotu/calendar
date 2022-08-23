@@ -10,11 +10,14 @@
 $gray-medium-light: #eaeaea;
 
 /* universal */
-
-body {
-  padding-top: 60px;
-  margin-top: 30px;
+.content {
+  margin-top: 50px;
 }
+
+// body {
+//   padding-top: 60px;
+//   margin-top: 30px;
+// }
 
 section {
   overflow: auto;

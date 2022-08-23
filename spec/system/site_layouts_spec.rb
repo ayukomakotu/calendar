@@ -4,6 +4,9 @@ RSpec.describe "SiteLayouts", type: :system do
 
   let!(:sample_office)  { FactoryBot.create(:sample_office) }
   let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
+  let!(:sample_target)  { FactoryBot.create(:sample_target, user_id: user1.id) }
+  let!(:sample_target2)  { FactoryBot.create(:sample_target, office_id: sample_office.id) }
+
 
 it "headerリンクが正しいか" do
     # log_in_system(user1) rails_helper内でメソッド化して使うと不安定になるため削除
