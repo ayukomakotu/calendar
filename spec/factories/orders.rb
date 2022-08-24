@@ -14,7 +14,7 @@ FactoryBot.define do
 
   factory :order3, class: Order do
     number { 100 }
-    price  { 200000 }
+    price  { 400000 }
     day    { "#{Date.today}" }
     created_at { Time.now }
   end

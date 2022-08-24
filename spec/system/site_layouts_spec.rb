@@ -32,7 +32,7 @@ it "headerリンクが正しいか" do
     click_on "見込み管理表へ移動 »"
     expect(current_path).to eq appoints_path
     visit home_path
-    click_on "実績一覧へ移動 »"
+    click_on "実績へ移動 »"
     expect(current_path).to eq achievements_events_path
   end
 end

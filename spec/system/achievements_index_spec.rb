@@ -5,7 +5,7 @@ RSpec.describe "AchievmentsIndex", type: :system do
     let!(:sample_office2)  { FactoryBot.create(:sample_office2)}
     let!(:user1)           { FactoryBot.create(:user1, office_id: sample_office.id) }
     let!(:user2)           { FactoryBot.create(:user2, office_id: sample_office2.id) }
-    let!(:user3)           { FactoryBot.create(:user3, office_id: sample_office1.id) }
+    let!(:user3)           { FactoryBot.create(:user3, office_id: sample_office.id) }
     let!(:customer)        { FactoryBot.create(:customer)}
     let!(:item)            { FactoryBot.create(:item) }
     let!(:route)           { FactoryBot.create(:route)}
@@ -19,6 +19,7 @@ RSpec.describe "AchievmentsIndex", type: :system do
     let!(:sample_target2)  { FactoryBot.create(:sample_target2, office_id: sample_office2.id)}
     let!(:sample_target3)  { FactoryBot.create(:sample_target3, user_id: user1.id)}
     let!(:sample_target4)  { FactoryBot.create(:sample_target4, user_id: user2.id)}
+    let!(:sample_target5)  { FactoryBot.create(:sample_target5, user_id: user3.id)}
 
     describe "表示とアクセス" do
         before do
@@ -61,19 +62,19 @@ RSpec.describe "AchievmentsIndex", type: :system do
         end
 
         it "全体当日売上が反映されているか" do
-            expect(page).to have_content ""
+            expect(page).to have_content 500000
         end
         it "全体月累計が反映されているか" do
-            expect(page).to have_content ""
+            expect(page).to have_content 700000
         end
         it "全体目標が反映されているか" do
-            expect(page).to have_content ""
+            expect(page).to have_content 31000000
         end
         it "全体不足が反映されているか" do
-            expect(page).to have_content ""
+            expect(page).to have_content 30300000
         end
         it "全体達成率が反映されているか" do
-            expect(page).to have_content ""
+            expect(page).to have_content "2.25%"
         end
     end
 
