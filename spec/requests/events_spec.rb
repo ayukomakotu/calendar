@@ -6,6 +6,8 @@ RSpec.describe "Events", type: :request do
   let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
   let!(:item)           { FactoryBot.create(:item) }
   let!(:route)          { FactoryBot.create(:route)}
+  let!(:sample_target)  { FactoryBot.create(:sample_target, office_id: sample_office.id)}
+  let!(:sample_target2) { FactoryBot.create(:sample_target2, user_id: user1.id)}
   
   describe "GET /index" do
     it "リクエストが成功するか" do
@@ -85,6 +87,14 @@ RSpec.describe "Events", type: :request do
                                                     price: 260000,
                                                     route_id: route.id }}
       expect(response).to redirect_to(login_path)
+    end
+  end
+
+  describe "GET /achievements" do
+    it "リクエストが成功するか" do
+      log_in_as(user1)
+      get achievements_events_path
+      expect(response.status).to eq 200
     end
   end
 

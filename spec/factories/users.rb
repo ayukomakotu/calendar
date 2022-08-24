@@ -4,6 +4,20 @@ FactoryBot.define do
     number { 1000 }
     password { "password" }
     password_confirmation { "password" }
+  
+  end
+  factory :user2, class: User do
+    name  { "user2" }
+    number { 2000 }
+    password { "password" }
+    password_confirmation { "password" }
+  end
+
+  factory :user3, class: User do
+    name  { "user3" }
+    number { 3000 }
+    password { "password" }
+    password_confirmation { "password" }
   end
 
   factory :sample_user, class: User do
