@@ -11,7 +11,7 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 .content {
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 // body {
@@ -63,10 +63,7 @@ p {
 
 
 /* header */
-.header {
-  // headerとbodyの隙間
-  margin-bottom: 50px;
-}
+
 #logo {
   float: left;
   margin-right: 10px;
