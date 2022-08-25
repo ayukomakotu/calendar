@@ -57,7 +57,6 @@ RSpec.describe "AchievmentsIndex", type: :system do
             expect(page).to have_content "-700000"
         end
         it "達成率が反映されているか" do
-            save_and_open_page
             expect(page).to have_content "30.0%"
         end
 
@@ -75,6 +74,12 @@ RSpec.describe "AchievmentsIndex", type: :system do
         end
         it "全体達成率が反映されているか" do
             expect(page).to have_content "2.25%"
+        end
+
+        it "他営業所へ移動できるか" do
+            find("a", text: sample_office2.name).click
+            save_and_open_page
+            expect(page).to have_content "sample_office2営業所"
         end
     end
 
