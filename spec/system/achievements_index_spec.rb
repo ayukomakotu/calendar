@@ -30,7 +30,7 @@ RSpec.describe "AchievmentsIndex", type: :system do
         end
 
         it "アクセスが正しくできるか" do 
-            expect(current_path).to eq achievements_events_path
+            expect(current_path).to eq achievements_path
         end
 
         it "タイトルが表示されているか" do

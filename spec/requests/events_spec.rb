@@ -89,13 +89,4 @@ RSpec.describe "Events", type: :request do
       expect(response).to redirect_to(login_path)
     end
   end
-
-  describe "GET /achievements" do
-    it "リクエストが成功するか" do
-      log_in_as(user1)
-      get achievements_events_path
-      expect(response.status).to eq 200
-    end
-  end
-
 end
