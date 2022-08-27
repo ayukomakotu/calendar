@@ -6,6 +6,12 @@
     <% end %>
     <h2><%= @office.name %>営業所</h2>
     <h3>当日受注表</h3>
+    <%= form_with url: achievements_path, method: :get do |f| %>
+        <%= select_month @month %>
+        
+        <%= f.submit "移動", class: "btn btn-primary" %>
+    <% end %>
+    
     <div class="scroll_parallel">
         <table class="table">
             <tr>

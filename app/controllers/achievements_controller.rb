@@ -7,6 +7,6 @@ class AchievementsController < ApplicationController
         @users = User.where(office_id: @office.id)
         # 今年度を取得 3月から2月
         @year = (Date.current << 2).year
-        @month = Date.today.month
+        @month = params[:date] ? params[:date][:month].to_i : Date.today.month 
     end
 end
