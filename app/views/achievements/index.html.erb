@@ -20,19 +20,19 @@
                 <tr>
                     <td><%= user.name %></td>
                     <td><%= user.today_achievement %></td>
-                    <td><%= user.monthly_achievement(Date.today) %></td>
-                    <td><%= user.monthly_target(Date.today.year, Date.today.month) %></td>
-                    <td><%= user.monthly_short(Date.today, Date.today.year, Date.today.month) %></td>
-                    <td><%= user.monthly_rate(Date.today, Date.today.year, Date.today.month) %>%</td>
+                    <td><%= user.monthly_achievement(@year, @month) %></td>
+                    <td><%= user.monthly_target(@year, @month) %></td>
+                    <td><%= user.monthly_short(@year, @month) %></td>
+                    <td><%= user.monthly_rate(@year, @month) %>%</td>
                 </tr>
             <% end %>
             <tr>
                 <td>全体</td>
-                <td><%= today_all %></td>
-                <td><%= monthly_all %></td>
-                <td><%= monthly_target_all %></td>
-                <td><%= monthly_short_all %></td>
-                <td><%= monthly_rate_all %>%</td>
+                <td><%= today_office %></td>
+                <td><%= monthly_office %></td>
+                <td><%= monthly_target_office %></td>
+                <td><%= monthly_short_office %></td>
+                <td><%= monthly_rate_office %>%</td>
             </tr>
         </table>
     </div>
@@ -58,10 +58,10 @@
             <% end %>
             <tr>
                 <td>全体</td>
-                <td><%= annual_achievement_all(@year) %></td>
-                <td><%= annual_target_all(@year).all %></td>
-                <td><%= annual_short_all(@year) %></td>
-                <td><%= annual_rate_all(@year) %>%</td>
+                <td><%= annual_achievement_office(@year) %></td>
+                <td><%= annual_target_office(@year).all %></td>
+                <td><%= annual_short_office(@year) %></td>
+                <td><%= annual_rate_office(@year) %>%</td>
             </tr>
         </table>
     </div>

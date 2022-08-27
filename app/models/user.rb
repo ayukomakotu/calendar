@@ -56,13 +56,13 @@ class User < ApplicationRecord
     self.appoints.where("day = :day", day: day)
   end
 
-  # 当日売上　　当日の4時までの売上を抽出したい（未完成）
+  # 当日売上　　当日の4時までの売上を抽出したい（未完成　0時から0時まで）
   def today_achievement
     self.orders.where(created_at: Time.zone.parse(Time.zone.today.to_s).all_day).map(&:price).sum
   end
   # 月次実績
-  def monthly_achievement(date)
-    self.orders.where(day: Date.parse(date.to_s).all_month).map(&:price).sum
+  def monthly_achievement(year, month)
+    self.orders.where(day: Date.parse("#{year}-#{month}-1").all_month).map(&:price).sum
   end
 
   #月目標
@@ -72,13 +72,13 @@ class User < ApplicationRecord
   end
 
   #月実績不足分
-  def monthly_short(date, year, month)
-    self.monthly_achievement(date) - self.monthly_target(year, month)
+  def monthly_short(year, month)
+    self.monthly_achievement(year, month) - self.monthly_target(year, month)
   end
 
   #達成率
-  def monthly_rate(date, year, month)
-    ((self.monthly_achievement(date).to_f / self.monthly_target(year, month).to_f) * 100).floor(2)
+  def monthly_rate(year, month)
+    ((self.monthly_achievement(year, month).to_f / self.monthly_target(year, month).to_f) * 100).floor(2)
   end
   
   #年間実績
