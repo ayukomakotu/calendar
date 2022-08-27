@@ -78,8 +78,26 @@ class User < ApplicationRecord
 
   #達成率
   def monthly_rate(date, year, month)
-    (self.monthly_achievement(date).to_f / self.monthly_target(year, month).to_f) * 100
+    ((self.monthly_achievement(date).to_f / self.monthly_target(year, month).to_f) * 100).floor(2)
   end
   
-end
+  #年間実績
+  def annual_achievement(year)
+    self.orders.where(day: "#{year}-3-1".to_date .. "#{year + 1}-2-1".to_date.end_of_month).map(&:price).sum
+  end
 
+  # 年間目標を取得
+  def annual_target(year)
+    Target.find_by(user_id: self.id, year: year)
+  end
+
+  # 年間実績不足
+  def annual_short(year)
+    self.annual_achievement(year) - self.annual_target(year).all
+  end
+
+  #年間達成率
+  def annual_rate(year)
+    ((self.annual_achievement(year).to_f / self.annual_target(year).all.to_f) * 100).floor(2)
+  end
+end

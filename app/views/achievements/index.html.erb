@@ -36,4 +36,33 @@
             </tr>
         </table>
     </div>
+
+    <h3>年間実績</h3>
+    <div class="scroll_parallel">
+        <table class="table">
+            <tr>
+                <th>名前</th>
+                <th>実績</th>
+                <th>目標</th>
+                <th>不足</th>
+                <th>目標達成率</th>
+            </tr>
+            <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.annual_achievement(@year) %></td>
+                    <td><%= user.annual_target(@year).all %></td> 
+                    <td><%= user.annual_short(@year) %></td>
+                    <td><%= user.annual_rate(@year) %>%</td>
+                </tr>
+            <% end %>
+            <tr>
+                <td>全体</td>
+                <td><%= annual_achievement_all(@year) %></td>
+                <td><%= annual_target_all(@year).all %></td>
+                <td><%= annual_short_all(@year) %></td>
+                <td><%= annual_rate_all(@year) %>%</td>
+            </tr>
+        </table>
+    </div>
 </div>
