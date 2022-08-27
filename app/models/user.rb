@@ -80,5 +80,6 @@ class User < ApplicationRecord
   def monthly_rate(date, year, month)
     (self.monthly_achievement(date).to_f / self.monthly_target(year, month).to_f) * 100
   end
+  
 end
 
