@@ -5,7 +5,7 @@
         <%= link_to "#{office.name}", achievements_path(office: office.id) %>
     <% end %>
     <h2><%= @office.name %>営業所</h2>
-    <h3>当日受注表</h3>
+    <h3><%= @month %>月 当日受注表</h3>
     <%= form_with url: achievements_path, method: :get do |f| %>
         <%= select_month @month %>
         
@@ -43,7 +43,7 @@
         </table>
     </div>
 
-    <h3>年間実績</h3>
+    <h3><%= @year %>年 年間実績</h3>
     <div class="scroll_parallel">
         <table class="table">
             <tr>
