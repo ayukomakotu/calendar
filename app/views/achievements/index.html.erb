@@ -24,21 +24,21 @@
             </tr>
             <% @users.each do |user| %>
                 <tr>
-                    <td><%= user.name %></td>
-                    <td><%= user.today_achievement %></td>
-                    <td><%= user.monthly_achievement(@year, @month) %></td>
-                    <td><%= user.monthly_target(@year, @month) %></td>
-                    <td><%= user.monthly_short(@year, @month) %></td>
-                    <td><%= user.monthly_rate(@year, @month) %>%</td>
+                    <td class="month"><%= user.name %></td>
+                    <td class="month"><%= user.today_achievement %></td>
+                    <td class="month"><%= user.monthly_achievement(@year, @month) %></td>
+                    <td class="month"><%= user.monthly_target(@year, @month) %></td>
+                    <td class="month"><%= user.monthly_short(@year, @month) %></td>
+                    <td class="month"><%= user.monthly_rate(@year, @month) %>%</td>
                 </tr>
             <% end %>
             <tr>
-                <td>全体</td>
-                <td><%= today_office %></td>
-                <td><%= monthly_office %></td>
-                <td><%= monthly_target_office %></td>
-                <td><%= monthly_short_office %></td>
-                <td><%= monthly_rate_office %>%</td>
+                <td class="month">全体</td>
+                <td class="month"><%= today_office %></td>
+                <td class="month"><%= monthly_office %></td>
+                <td class="month"><%= monthly_target_office %></td>
+                <td class="month"><%= monthly_short_office %></td>
+                <td class="month"><%= monthly_rate_office %>%</td>
             </tr>
         </table>
     </div>
@@ -55,19 +55,19 @@
             </tr>
             <% @users.each do |user| %>
                 <tr>
-                    <td><%= user.name %></td>
-                    <td><%= user.annual_achievement(@year) %></td>
-                    <td><%= user.annual_target(@year).all %></td> 
-                    <td><%= user.annual_short(@year) %></td>
-                    <td><%= user.annual_rate(@year) %>%</td>
+                    <td class="year"><%= user.name %></td>
+                    <td class="year"><%= user.annual_achievement(@year) %></td>
+                    <td class="year"><%= user.annual_target(@year).all %></td> 
+                    <td class="year"><%= user.annual_short(@year) %></td>
+                    <td class="year"><%= user.annual_rate(@year) %>%</td>
                 </tr>
             <% end %>
             <tr>
-                <td>全体</td>
-                <td><%= annual_achievement_office(@year) %></td>
-                <td><%= annual_target_office(@year).all %></td>
-                <td><%= annual_short_office(@year) %></td>
-                <td><%= annual_rate_office(@year) %>%</td>
+                <td class="year">全体</td>
+                <td class="year"><%= annual_achievement_office(@year) %></td>
+                <td class="year"><%= annual_target_office(@year).all %></td>
+                <td class="year"><%= annual_short_office(@year) %></td>
+                <td class="year"><%= annual_rate_office(@year) %>%</td>
             </tr>
         </table>
     </div>

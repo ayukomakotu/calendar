@@ -43,45 +43,80 @@ RSpec.describe "AchievmentsIndex", type: :system do
             end
         end
 
-        it "当日売上が反映されているか" do
-            expect(page).to have_content 100000
+        describe "当日受注表" do
+            it "当日売上が反映されているか" do
+                expect(page).to have_selector ".month", text: 100000
+            end
+
+            it "月累計が反映されているか" do
+                expect(page).to have_selector ".month", text: 300000
+            end
+            it "目標が反映されているか" do
+                expect(page).to have_selector ".month", text: 1000000
+            end
+            it "不足が反映されているか" do
+                expect(page).to have_selector ".month", text: "-700000"
+            end
+            it "達成率が反映されているか" do
+                expect(page).to have_selector ".month", text: "30.0%"
+            end
+
+            it "全体当日売上が反映されているか" do
+                expect(page).to have_selector ".month", text: 500000
+            end
+            it "全体月累計が反映されているか" do
+                expect(page).to have_selector ".month", text: 700000
+            end
+            it "全体目標が反映されているか" do
+                expect(page).to have_selector ".month", text: 31000000
+            end
+            it "全体不足が反映されているか" do
+                expect(page).to have_selector ".month", text: -30300000
+            end
+            it "全体達成率が反映されているか" do
+                expect(page).to have_selector ".month", text: "2.25%"
+            end
+
+            it "他営業所へ移動できるか" do
+                find("a", text: sample_office2.name).click
+                save_and_open_page
+                expect(page).to have_content "sample_office2営業所"
+            end
         end
 
-        it "月累計が反映されているか" do
-            expect(page).to have_content 300000
-        end
-        it "目標が反映されているか" do
-            expect(page).to have_content 1000000
-        end
-        it "不足が反映されているか" do
-            expect(page).to have_content "-700000"
-        end
-        it "達成率が反映されているか" do
-            expect(page).to have_content "30.0%"
-        end
+        describe "年間実績" do
+            it "個人年間実績が表示されているか" do
+                expect(page).to have_selector ".year", text: 300000
+            end
 
-        it "全体当日売上が反映されているか" do
-            expect(page).to have_content 500000
-        end
-        it "全体月累計が反映されているか" do
-            expect(page).to have_content 700000
-        end
-        it "全体目標が反映されているか" do
-            expect(page).to have_content 31000000
-        end
-        it "全体不足が反映されているか" do
-            expect(page).to have_content 30300000
-        end
-        it "全体達成率が反映されているか" do
-            expect(page).to have_content "2.25%"
-        end
+            it "個人年間目標が表示されているか" do
+                expect(page).to have_selector ".year", text: 12000000
+            end
 
-        it "他営業所へ移動できるか" do
-            find("a", text: sample_office2.name).click
-            save_and_open_page
-            expect(page).to have_content "sample_office2営業所"
+            it "個人年間不足が表示されているか" do
+                expect(page).to have_selector ".year", text: -11700000
+            end
+
+            it "個人年間達成率が反映されるか" do
+                expect(page).to have_selector ".year", text: "2.5%"
+            end
+
+            it "全体年間実績が表示されているか" do
+                expect(page).to have_selector ".year", text: 700000
+            end
+
+            it "全体年間目標が表示されているか" do
+                expect(page).to have_selector ".year", text: 372000000
+            end
+
+            it "個人年間不足が表示されているか" do
+                expect(page).to have_selector ".year", text: -371300000
+            end
+
+            it "個人年間達成率が反映されるか" do
+                expect(page).to have_selector ".year", text: "0.18%"
+            end
         end
     end
-
 
 end
