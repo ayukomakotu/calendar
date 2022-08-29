@@ -79,7 +79,6 @@ RSpec.describe "AchievmentsIndex", type: :system do
 
             it "他営業所へ移動できるか" do
                 find("a", text: sample_office2.name).click
-                save_and_open_page
                 expect(page).to have_content "sample_office2営業所"
             end
         end
