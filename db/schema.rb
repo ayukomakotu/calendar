@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_21_072232) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_132006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,8 +23,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.string "kind"
     t.string "result"
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_appoints_on_user_id"
   end
 
@@ -34,19 +33,19 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.string "first_name"
     t.string "address"
     t.string "telephone"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "start_time"
+    t.datetime "start_time", precision: nil
     t.integer "car"
     t.time "start"
     t.time "finish"
     t.bigint "user_id", null: false
     t.bigint "customer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_events_on_customer_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -55,15 +54,15 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.string "name"
     t.string "unit"
     t.integer "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_items_on_name", unique: true
   end
 
   create_table "offices", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_offices_on_name", unique: true
   end
 
@@ -75,8 +74,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.bigint "event_id", null: false
     t.bigint "route_id", null: false
     t.bigint "item_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_orders_on_event_id"
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["route_id"], name: "index_orders_on_route_id"
@@ -85,8 +84,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
 
   create_table "routes", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_routes_on_name", unique: true
   end
 
@@ -107,8 +106,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.integer "tr_12"
     t.integer "tr_1"
     t.integer "tr_2"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["office_id"], name: "index_targets_on_office_id"
     t.index ["user_id"], name: "index_targets_on_user_id"
   end
@@ -119,8 +118,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_072232) do
     t.string "password_digest", null: false
     t.string "remember_digest"
     t.bigint "office_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["number"], name: "index_users_on_number", unique: true
     t.index ["office_id"], name: "index_users_on_office_id"
