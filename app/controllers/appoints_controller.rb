@@ -16,7 +16,7 @@ class AppointsController < ApplicationController
             flash[:info] = "予定を追加しました"
             redirect_to appoints_path
         else
-            render 'new'
+            render 'new', status: :unprocessable_entity
         end
     end
 

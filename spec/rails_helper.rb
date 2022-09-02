@@ -84,6 +84,7 @@ RSpec.configure do |config|
   #テストユーザーとしてログイン（system spec）
   def log_in_system(user)
     visit login_path
+    visit current_path
     fill_in 'session[number]', with: user.number
     fill_in 'session[password]', with: user.password
     click_button 'ログイン'

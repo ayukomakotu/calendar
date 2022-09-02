@@ -1,0 +1,350 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+/* universal */
+.content {
+  padding-top: 50px;
+}
+
+// body {
+//   padding-top: 60px;
+//   margin-top: 30px;
+// }
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: gray;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 15px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: lightgrey;
+  a {
+    color: lightgrey;
+    &:hover {
+      color: gray;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* カレンダー */
+
+
+td.fc-day-sun {
+  background-color: #fde5e9;
+}
+
+.simple-calendar {
+  
+  .table{
+    table-layout: fixed;
+  }
+
+  // 前月、翌月を非表示（枠は残る）
+  // .prev-month {
+  //   display: none;
+  // }
+  // .next-month {
+  //   display: none;
+  // }
+
+  .wday-0 {
+    background-color: #fde5e9;
+  }
+
+  .wday-6 {
+    background-color: rgb(189, 218, 228);
+  }
+
+  .holiday {
+    background-color: #fde5e9;
+  }
+
+  .day {
+    text-align: center;
+  }
+
+  // 施工予定のデザイン
+  .event {
+    background-color: lightblue;
+    margin: 5px;
+    padding: 5px;
+  }
+}
+
+//home display
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.rounded {
+  margin-top: 10px;
+}
+
+// event_form用sidebar
+.event_form {
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+}
+
+
+
+
+// 見込み管理表
+.appoints .frame {
+  background-color: $gray-medium-light;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.appoints .name {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.appoints .new {
+  padding: 10px;
+  font-weight: bold;
+}
+// 要素を横スクロールさせる
+.appoints .scroll_parallel {
+  // width: 100%;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+  height: 250px;
+}
+
+.appoint {
+  background-color: powderblue;
+  width: 230px;
+  height: 160px;
+  margin: 10px;
+}
+
+.appoint .box-link {
+  // box-sizing: border-box;
+  // box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  // -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  // -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  // // color: #000000;
+  display: block;
+  position: relative;
+  transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  width: 230px;
+  text-decoration: none;
+}
+
+
+.appoint .detail div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.appoint p {
+  font-size: 13px;
+  line-height: 1.6;
+  padding-left: 10px;
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  width: 40%; //要素の折り返し地点の設定
+}
+.appoint .time {
+  background-color: #1B73BA;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.6;
+  padding: 8px;
+  text-decoration: none;
+  position: relative;
+  margin: 10px;
+}
+
+
+.appoint .box-link:hover{
+  opacity: 0.8;
+}
+
+
+// 実績一覧
+
+
+.achieve .scroll_parallel {
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.achieve table {
+  border-collapse:separate;
+  border-spacing: 0;
+  width: 100%
+}
+
+@media screen and (max-width: 600px) {
+  .achieve table {
+    border-collapse:separate;
+    border-spacing: 0;
+    width: 1000px
+  }
+}
+
+.achieve table th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+.achieve table th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+.achieve table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 15%;
+  padding: 10px 0;
+}
+
+.achieve table td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  width: 15%;
+  padding: 10px 0;
+}
+
+.achieve table tr:nth-child(2n+1) {
+    background: #f1f6fc;
+  }
+  
+
+// .achieve table td:last-child{
+//   border-right: 1px solid #a8b7c5;
+// }
+
+// .achieve table tr:last-child td:first-child {
+//   border-radius: 0 0 0 5px;
+//   background: #f1f6fc;
+// }
+
+// .achieve table tr:last-child td:last-child {
+//   border-radius: 0 0 5px 0;
+// }
+// .achieve th {
+//   background-color: aquamarine;
+// }

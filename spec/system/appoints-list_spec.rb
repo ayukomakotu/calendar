@@ -33,7 +33,9 @@ RSpec.describe "AppointsList", type: :system do
         
         before do
             log_in_system(user1)
+            visit current_path
             visit appoints_path
+            visit current_path
             first(".new").click
             visit current_path
         end
