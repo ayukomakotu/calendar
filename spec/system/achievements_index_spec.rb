@@ -24,7 +24,6 @@ RSpec.describe "AchievmentsIndex", type: :system do
     describe "表示とアクセス" do
         before do
             log_in_system(user1)
-            visit current_path
             click_on "実績へ移動 »"
             visit current_path
         end

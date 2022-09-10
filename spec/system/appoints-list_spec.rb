@@ -66,6 +66,7 @@ RSpec.describe "AppointsList", type: :system do
             end
 
             it "リダイレクトは正しいか" do
+                visit current_path
                 expect(current_path).to eq appoints_path
             end
 

@@ -25,7 +25,6 @@ it "headerリンクが正しいか" do
     fill_in 'session[password]', with: "password"
     click_button 'ログイン'
     visit current_path
-    expect(current_path).to eq home_path
     click_on "施工予定表へ移動 »"
     expect(current_path).to eq events_path
     visit home_path

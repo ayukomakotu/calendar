@@ -15,6 +15,17 @@ RSpec.describe "Login", type: :system do
             visit current_path
             expect(current_path).to eq home_path
         end
+
+        # it "フレンドリーフォワーディングが機能しているか" do
+        #     visit appoints_path
+        #     # visit current_path
+        #     expect(current_path).to eq login_path
+        #     fill_in 'session[number]', with: 1000
+        #     fill_in 'session[password]', with: "password"
+        #     click_button 'ログイン'
+        #     visit current_path
+        #     expect(current_path).to eq appoints_path
+        # end
     end
 
     describe "無効な値の場合" do

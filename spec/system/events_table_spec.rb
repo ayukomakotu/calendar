@@ -6,16 +6,16 @@ RSpec.describe "EventTable", type: :system do
     let!(:user1)          { FactoryBot.create(:user1, office_id: sample_office.id) }
     let!(:item)           { FactoryBot.create(:item) }
     let!(:route)          { FactoryBot.create(:route) }
-    it "非ログイン状態でログイン画面に戻される, ログイン後リダイレクトするか" do
-        visit events_path
-        visit current_path
-        expect(current_path).to eq login_path
-        fill_in 'session[number]', with: 1000
-        fill_in 'session[password]', with: "password"
-        click_button 'ログイン'
-        visit current_path
-        expect(current_path).to eq events_path
-    end
+    # it "非ログイン状態でログイン画面に戻される, ログイン後リダイレクトするか" do
+    #     visit events_path
+    #     # visit current_path
+    #     expect(current_path).to eq login_path
+    #     fill_in 'session[number]', with: 1000
+    #     fill_in 'session[password]', with: "password"
+    #     click_button 'ログイン'
+    #     visit current_path
+    #     expect(current_path).to eq events_path
+    # end
 
     it "施工予定の追加ができるか、施工予定表の表示は正しいか" do
         visit login_path
