@@ -9,7 +9,7 @@ RSpec.describe "AppointsList", type: :system do
     describe "表示とアクセス" do
         before do
             log_in_system(user1)
-            visit current_path
+            # visit current_path 逆に不安定？
             click_on "見込み管理表へ移動 »"
             visit current_path
         end
@@ -66,7 +66,7 @@ RSpec.describe "AppointsList", type: :system do
             end
 
             it "リダイレクトは正しいか" do
-                visit current_path
+                # visit current_path 逆に不安定？
                 expect(current_path).to eq appoints_path
             end
 

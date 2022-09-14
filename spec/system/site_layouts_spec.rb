@@ -19,12 +19,8 @@ it "headerリンクが正しいか" do
   end
 
   it "home画面のリンクは正しいか" do
-    visit login_path
-    visit current_path
-    fill_in 'session[number]', with: 1000
-    fill_in 'session[password]', with: "password"
-    click_button 'ログイン'
-    visit current_path
+    log_in_system(user1)
+    # visit current_path
     click_on "施工予定表へ移動 »"
     expect(current_path).to eq events_path
     visit home_path
