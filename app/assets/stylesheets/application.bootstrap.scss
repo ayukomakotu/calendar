@@ -193,11 +193,32 @@ td.fc-day-sun {
 }
 
 // event_form用sidebar
-.event_form {
-  display: flex;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
+.event-form {
+  position: fixed;
+  bottom: 0;
+  background-color: #d8e6f6;
+  width: 100%;
+}
+
+.event-form .form-content {
+    padding: 10px;
+}
+
+.event-form .field {
+    margin-bottom: 10px;
+}
+
+.event-form .head {
+    font-weight: bold;
+}
+    
+.event_form .address {
+    width: 500px;
+}
+
+.event-form summary {
+    text-align: center;
+    height: 50px;
 }
 
 

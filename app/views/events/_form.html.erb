@@ -3,41 +3,32 @@
 
 
     <!-- 顧客情報 --!>
-    <%= f.label :施主名 %>
     <div class="field">
+        <div class="head"><%= f.label :施主情報 %></div>
         <%= f.label :姓 %>
         <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
-        <%= f.label :名 %>
+        　<%= f.label :名 %>
         <%= f.text_field :first_name %>
-    </div>
-    <div class="field">
-        <!-- 県、市、町、分けた方がいい？ --!>
-        <%= f.label :住所 %>
-        <%= f.text_field :address %>
-    </div>
-    <div class="field">
-        <%= f.label :電話番号 %>
+        　<%= f.label :電話番号 %>
         <%= f.text_field :telephone %>
+        <!-- 県、市、町、分けた方がいい？ --!>
+        <div>
+            <%= f.label :住所 %>
+            <%= f.text_field :address, class: "address" %>
+        </div>
     </div>
 
     <!-- 施工予定 -->
     <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
     <div class="field">
+        <div class="head"><%= f.label :施工日程 %></div>
         <%= f.label :日付 %>
         <%= f.date_field :start_time, value: Date.today %>
-    </div>
-    <div class="field">
-        <%= f.label :工事車 %>
+        　<%= f.label :工事車 %>
         <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]] %>
-    </div>
-    <div class="field">
-        <%= f.label :開始時間 %>
+        　<%= f.label :開始時間 %>
         <%= f.time_field :start, value: Time.now %>
-    </div>
-    <div class="field">
-        <%= f.label :終了時間 %>
+        　<%= f.label :終了時間 %>
         <%= f.time_field :finish, value: Time.now %>
     </div>
 
@@ -47,27 +38,20 @@
     <!-- 商品 --!>
     
     <div class="field">
-        <%= f.label :施工内容 %>
+        <div class="head"><%= f.label :施工内容 %></div>
+        <%= f.label :施工名称 %>
         <%= f.collection_select :item_id, Item.all, :id , :name %>
-    </div>
-
-    <div class="field">
-        <%= f.label :数量 %>
+        　<%= f.label :数量 %>
         <%= f.number_field :number %>
-    </div>
-
-    <div class="field">
-        <%= f.label :金額 %>
+        　<%= f.label :金額 %>
         <%= f.number_field :price %>
-    </div>
 
     <!-- 取扱経路 --!>
-    <div class="field">
-        <%= f.label :取扱経路 %>
+        　<%= f.label :取扱経路 %>
         <%= f.collection_select :route_id, Route.all, :id, :name %>
     </div>
 
-    <%= f.submit "登録", class: "btn btn-primary"%>
+    <%= f.submit "追加", class: "btn btn-primary"%>
 
 <% end %>
 
