@@ -27,6 +27,8 @@ RSpec.describe "EventTable", type: :system do
         visit current_path #挙動がおかしくなるのでリロード
 
         visit events_path
+        # 折りたたみメニューをクリック
+        find(".folding").click
         #formに値を入力して送信
         fill_in "event_form[last_name]", with: "sample_last_name"
         fill_in "event_form[first_name]", with: "sample_first_name"
@@ -40,7 +42,7 @@ RSpec.describe "EventTable", type: :system do
         select route.name, from: "event_form_route_id" #セレクトボックスのidを指定
         fill_in "event_form_start", with: "09:00"
         fill_in "event_form_finish", with: "11:00"
-        click_button "登録"
+        click_button "追加"
         visit current_path
 
         #施工予定が追加され、正しく表示されているか
