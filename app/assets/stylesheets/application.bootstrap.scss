@@ -110,8 +110,17 @@ td.fc-day-sun {
 
 .simple-calendar {
   
-  .table{
+  table{
     table-layout: fixed;
+  }
+
+//   セルの幅（日付）
+  table thead .date {
+    width: 100px;
+  }
+
+  table tbody .day {
+    height: 150px;
   }
 
   // 前月、翌月を非表示（枠は残る）
@@ -138,13 +147,17 @@ td.fc-day-sun {
     text-align: center;
   }
 
-  // 施工予定のデザイン
+//   // 施工予定のデザイン
   .event {
     background-color: lightblue;
     margin: 5px;
     padding: 5px;
   }
 }
+
+// .simple-calendar td th {
+//     height: 200px;
+// }
 
 //home display
 
