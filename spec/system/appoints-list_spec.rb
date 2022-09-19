@@ -45,8 +45,9 @@ RSpec.describe "AppointsList", type: :system do
             expect(current_path).to eq new_appoint_path
         end
 
-        describe "パラメータが正常" do
-            before do
+        describe "パラメータが正常な場合" do
+
+            it "appointが新規作成されているか" do
                 # 新しくappointを作成する
                 fill_in "appoint[name]", with: "田中"
                 fill_in "appoint[address]", with: "松江" 
@@ -55,9 +56,6 @@ RSpec.describe "AppointsList", type: :system do
                 fill_in "appoint[time]", with: "09:00"
                 fill_in "appoint[kind]", with: "推進"
                 click_button "追加"
-            end
-
-            it "appointが新規作成されているか" do
                 expect(page).to have_content "田中"
                 expect(page).to have_content "松江"
                 expect(page).to have_content "xxx-xxxx"
@@ -66,18 +64,34 @@ RSpec.describe "AppointsList", type: :system do
             end
 
             it "リダイレクトは正しいか" do
+                # 新しくappointを作成する
+                fill_in "appoint[name]", with: "田中"
+                fill_in "appoint[address]", with: "松江" 
+                fill_in "appoint[telephone]", with: "xxx-xxxx"
+                fill_in "appoint[day]", with: Date.today
+                fill_in "appoint[time]", with: "09:00"
+                fill_in "appoint[kind]", with: "推進"
+                click_button "追加"
                 # visit current_path 逆に不安定？
                 expect(current_path).to eq appoints_path
             end
 
             it "フラッシュメッセージが表示されているか" do
+                # 新しくappointを作成する
+                fill_in "appoint[name]", with: "田中"
+                fill_in "appoint[address]", with: "松江" 
+                fill_in "appoint[telephone]", with: "xxx-xxxx"
+                fill_in "appoint[day]", with: Date.today
+                fill_in "appoint[time]", with: "09:00"
+                fill_in "appoint[kind]", with: "推進"
+                click_button "追加"
                 expect(page).to have_content "予定を追加しました"
             end
         end
 
         describe "パラメータが不正" do
 
-            before do 
+            it "appointの新規作成が失敗するか" do
                 fill_in "appoint[name]", with: "   "
                 fill_in "appoint[address]", with: "   " 
                 fill_in "appoint[telephone]", with: "     "
@@ -85,14 +99,18 @@ RSpec.describe "AppointsList", type: :system do
                 fill_in "appoint[time]", with: "   "
                 fill_in "appoint[kind]", with: "   "
                 click_button "追加"
-            end
-
-            it "appointの新規作成が失敗するか" do
                 visit appoints_path
                 expect(page).not_to have_selector ".appoint"
             end
 
             it  "エラーメッセージが表示されているか" do
+                fill_in "appoint[name]", with: "   "
+                fill_in "appoint[address]", with: "   " 
+                fill_in "appoint[telephone]", with: "     "
+                fill_in "appoint[day]", with: "    "
+                fill_in "appoint[time]", with: "   "
+                fill_in "appoint[kind]", with: "   "
+                click_button "追加"
                 expect(page).to have_selector "#error_explanation"
                 # エラーメッセージのidを指定
             end
