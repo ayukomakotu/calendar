@@ -3,55 +3,73 @@
 
 
     <!-- 顧客情報 --!>
-    <div class="field">
+    <div class="row g-3">
         <div class="head"><%= f.label :施主情報 %></div>
-        <%= f.label :姓 %>
-        <%= f.text_field :last_name %>
-        　<%= f.label :名 %>
-        <%= f.text_field :first_name %>
-        　<%= f.label :電話番号 %>
-        <%= f.text_field :telephone %>
-        <!-- 県、市、町、分けた方がいい？ --!>
-        <div>
-            <%= f.label :住所 %>
-            <%= f.text_field :address, class: "address" %>
+        <div class="col-md-4">
+            <%= f.label :姓, class: "form-label" %>
+            <%= f.text_field :last_name, class: "form-control" %>
         </div>
-    </div>
+        <div class="col-md-4">
+            <%= f.label :名, class: "form-label" %>
+            <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+            <%= f.label :電話番号, class: "form-label" %>
+            <%= f.text_field :telephone, class: "form-control" %>
+        </div>
+            <!-- 県、市、町、分けた方がいい？ --!>
+        <div class="col-12">
+            <%= f.label :住所, class: "form-label" %>
+            <%= f.text_field :address, class: "form-control"%>
+        </div>
 
-    <!-- 施工予定 -->
-    <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
-    <div class="field">
+        <!-- 施工予定 -->
+        <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
         <div class="head"><%= f.label :施工日程 %></div>
-        <%= f.label :日付 %>
-        <%= f.date_field :start_time, value: Date.today %>
-        　<%= f.label :工事車 %>
-        <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]] %>
-        　<%= f.label :開始時間 %>
-        <%= f.time_field :start, value: Time.now %>
-        　<%= f.label :終了時間 %>
-        <%= f.time_field :finish, value: Time.now %>
-    </div>
+        <div class="col-md-3">
+            <%= f.label :日付, class: "form-label" %>
+            <%= f.date_field :start_time, value: Date.today, class: "form-control" %>
+        </div>
+        <div class="col-md-3">
+            <%= f.label :工事車, class: "form-label" %>
+            <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]], class: "form-select" %>
+        </div>
+        <div class="col-md-3">
+            <%= f.label :開始時間, class: "form-label" %>
+            <%= f.time_field :start, value: Time.now, class: "form-control" %>
+        </div>
+        <div class="col-md-3">
+            <%= f.label :終了時間, class: "form-label" %>
+            <%= f.time_field :finish, value: Time.now, class: "form-control" %>
+        </div>
 
-    <!-- 営業担当 --!>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+        <!-- 営業担当 --!>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
 
-    <!-- 商品 --!>
-    
-    <div class="field">
+        <!-- 商品 --!>
+
         <div class="head"><%= f.label :施工内容 %></div>
-        <%= f.label :施工名称 %>
-        <%= f.collection_select :item_id, Item.all, :id , :name %>
-        　<%= f.label :数量 %>
-        <%= f.number_field :number %>
-        　<%= f.label :金額 %>
-        <%= f.number_field :price %>
+        <div class="col-md-3">
+            <%= f.label :施工名称, class: "form-label" %>
+            <%= f.collection_select :item_id, Item.all, :id , :name, { class: "form-slelct", required: true } %>
+        </div>
+        <div class="col-md-3">
+            <%= f.label :数量, class: "form-label" %>
+            <%= f.number_field :number, class: "form-control" %>
+        </div>
+        <div class="col-md-3">
+            <%= f.label :金額, class: "form-label" %>
+            <%= f.number_field :price, class: "form-control" %>
+        </div>
 
-    <!-- 取扱経路 --!>
-        　<%= f.label :取扱経路 %>
-        <%= f.collection_select :route_id, Route.all, :id, :name %>
+        <div class="col-md-3">
+            <!-- 取扱経路 --!>
+            　<%= f.label :取扱経路, class: "form-label" %>
+            <%= f.collection_select :route_id, Route.all, :id, :name, { class: "form-selelct" } %>
+        </div>
+
+        <%= f.submit "追加", class: "btn btn-primary col-md-6"%>
     </div>
-
-    <%= f.submit "追加", class: "btn btn-primary"%>
 
 <% end %>
 
