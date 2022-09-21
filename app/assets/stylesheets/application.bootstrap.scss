@@ -109,9 +109,12 @@ td.fc-day-sun {
 }
 
 .simple-calendar {
-  
+  white-space: nowrap;
+  overflow-x: scroll;
   table{
     table-layout: fixed;
+    width: 1000px
+    
   }
 
 //   セルの幅（日付）
@@ -192,7 +195,7 @@ td.fc-day-sun {
   margin-top: 10px;
 }
 
-// event_form用sidebar
+// event_form用下部メニュー
 .event-form {
   position: fixed;
   bottom: 0;
