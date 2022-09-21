@@ -202,15 +202,18 @@ td.fc-day-sun {
 
 .event-form .head {
     font-weight: bold;
-    padding-top: 10px;
+    margin-bottom: -15px;
+    margin-top: 20px;
+    padding: 0;
 }
+
 
 .event-form summary {
     text-align: center;
     height: 30px;
 }
 
-.event-form .col-12 .col-md-6 .col-md-4 .col-md-3 {
+.event-form .row  {
     margin: 10px;
 }
 
