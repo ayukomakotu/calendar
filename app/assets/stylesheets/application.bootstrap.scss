@@ -161,6 +161,35 @@ td.fc-day-sun {
 //     height: 200px;
 // }
 
+// event_form用下部メニュー
+.event-form {
+    position: fixed;
+    bottom: 0;
+    background-color: #d8e6f6;
+    width: 100%;
+  }
+  
+  .event-form .head {
+      font-weight: bold;
+      margin-bottom: -15px;
+      margin-top: 20px;
+      padding: 0;
+  }
+  
+  
+  .event-form summary {
+      text-align: center;
+      height: 30px;
+  }
+  
+  .event-form .row  {
+      margin: 10px;
+  }
+
+  .event-form input#event_form_address {
+    width: 600px;
+  }
+  
 //home display
 
 .form-signin {
@@ -193,32 +222,6 @@ td.fc-day-sun {
 .rounded {
   margin-top: 10px;
 }
-
-// event_form用下部メニュー
-.event-form {
-  position: fixed;
-  bottom: 0;
-  background-color: #d8e6f6;
-  width: 100%;
-}
-
-.event-form .head {
-    font-weight: bold;
-    margin-bottom: -15px;
-    margin-top: 20px;
-    padding: 0;
-}
-
-
-.event-form summary {
-    text-align: center;
-    height: 30px;
-}
-
-.event-form .row  {
-    margin: 10px;
-}
-
 
 
 
