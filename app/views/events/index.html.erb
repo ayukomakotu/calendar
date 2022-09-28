@@ -3,11 +3,38 @@
 <div class="event-form">
     <details>
         <summary class="folding">施工予定を追加する</summary>
-        <div class="form-content">
+        <div class="details-content">
             <%= render "events/form" %>
         </div>
     </details>
 </div>
+
+<details>
+        <summary class="folding">施工予定を追加する</summary>
+            <%= form_with url: new_event_path, method: :get, local: true do |f| %>
+                <div class="details-content">
+                <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
+                <div class="head"><%= f.label :施工日程 %></div>
+                <div class="col-md-3">
+                    <div><%= f.label :日付 %></div>
+                    <%= f.date_field :start_time, value: Date.today %>
+                </div>
+                <div class="col-md-3">
+                    <div><%= f.label :工事車 %></div>
+                    <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]] %>
+                </div>
+                <div class="col-md-3">
+                    <div><%= f.label :開始時間 %></div>
+                    <%= f.time_field :start, value: "09:00", pattern: "[0-9]{2}:[0-9]{2}" %>
+                </div>
+                <div class="col-md-3">
+                    <div><%= f.label :終了時間 %></div>
+                    <%= f.time_field :finish, value: "11:00", pattern: "[0-9]{2}:[0-9]{2}" %>
+                </div>
+                <%= f.submit "追加", class: "btn btn-primary col-md-4"%>
+            <% end %>
+        </div>
+</details>
 
 
 <h3>施工予定表</h3>

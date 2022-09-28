@@ -26,19 +26,19 @@
     <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
     <div class="field">
         <%= f.label :日付 %>
-        <%= f.date_field :start_time, value: Date.today %>
+        <%= f.date_field :start_time, value: params["start_time"] %>
     </div>
     <div class="field">
         <%= f.label :工事車 %>
-        <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]] %>
+        <%= f.select :car, [["１号車", 1], ["２号車", 2], ["３号車", 3]], selected: params["car"].to_i %>
     </div>
     <div class="field">
         <%= f.label :開始時間 %>
-        <%= f.time_field :start, value: Time.now %>
+        <%= f.time_field :start, value: params["start"] %>
     </div>
     <div class="field">
         <%= f.label :終了時間 %>
-        <%= f.time_field :finish, value: Time.now %>
+        <%= f.time_field :finish, value: params["finish"] %>
     </div>
 
     <!-- 営業担当 --!>

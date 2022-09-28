@@ -162,7 +162,7 @@ td.fc-day-sun {
 // }
 
 // event_form用下部メニュー
-.event-form {
+  .event-form {
     position: fixed;
     bottom: 0;
     background-color: #d8e6f6;
@@ -187,10 +187,53 @@ td.fc-day-sun {
       transition: 0.2s;
       
   }
-  
-  .event-form .row  {
-      margin: 10px;
+
+  .event_form summary::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0d7";
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
   }
+
+  .details-content {
+      width: 60%;
+      margin: 0 auto;
+  }
+  .details-content p {
+      width: 95%;
+  }  
+  details[open] summary:after {
+      transform: rotate(180deg);
+  }  
+  details[open] .details-content {
+      animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+      0% {
+          opacity: 0;
+          transform: translateY(-10px);
+      }
+      100% {
+          opacity: 1;
+      }
+  }  
+  @media screen and (max-width: 960px) {
+      summary {
+          width: 90%;
+      }
+      .details-content {
+          width: 90%;
+      }
+      .details-content p {
+          margin: 10px auto 15px;
+      }
+  }
+  
+//   .event-form .row  {
+//       margin: 10px;
+//   }
 
   .event-form input#event_form_address {
     width: 600px;
