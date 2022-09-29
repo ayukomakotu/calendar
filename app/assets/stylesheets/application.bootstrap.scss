@@ -169,14 +169,10 @@ td.fc-day-sun {
     width: 100%;
   }
   
-  .event-form .head {
-      font-weight: bold;
-      margin-bottom: -15px;
-      margin-top: 20px;
-      padding: 0;
+  .event-form .col-md-3 {
+    text-align: center;
+    margin-bottom: 5px;
   }
-  
-  
   .event-form summary {
       width: 100%;
       margin: 0 auto 5px;
@@ -188,28 +184,7 @@ td.fc-day-sun {
       
   }
 
-  .event_form summary::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f0d7";
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    transition: all 0.5s ease;
-  }
 
-  .details-content {
-      width: 60%;
-      margin: 0 auto;
-  }
-  .details-content p {
-      width: 95%;
-  }  
-  details[open] summary:after {
-      transform: rotate(180deg);
-  }  
-  details[open] .details-content {
-      animation: fadeIn 0.3s ease;
-  }
   @keyframes fadeIn {
       0% {
           opacity: 0;
