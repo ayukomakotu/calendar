@@ -30,20 +30,24 @@ RSpec.describe "EventTable", type: :system do
         # 折りたたみメニューをクリック
         find(".folding").click
         #formに値を入力して送信
+        fill_in "start_time", with: Date.today
+        select "１号車", from: "car" #セレクトボックスのidを指定
+        fill_in "start", with: "09:00"
+        fill_in "finish", with: "11:00"
+        click_button "施工内容の入力へ"
+        # events/newへ遷移しているか
+        expect(current_path).to eq new_event_path
+
+
         fill_in "event_form[last_name]", with: "sample_last_name"
         fill_in "event_form[first_name]", with: "sample_first_name"
         fill_in "event_form[address]", with: "sample_address"
         fill_in "event_form[telephone]", with: "sample_telephone"
-        fill_in "event_form[start_time]", with: Date.today
-        select "１号車", from: "event_form_car" #セレクトボックスのidを指定
         select item.name, from: "event_form_item_id" #セレクトボックスのidを指定
         fill_in "event_form_number", with: 100
         fill_in "event_form_price",  with: 1000000
         select route.name, from: "event_form_route_id" #セレクトボックスのidを指定
-        fill_in "event_form_start", with: "09:00"
-        fill_in "event_form_finish", with: "11:00"
-        click_button "追加"
-        visit current_path
+        click_button "登録"
 
         #施工予定が追加され、正しく表示されているか
         expect(page).to have_content "sample_last_name"
