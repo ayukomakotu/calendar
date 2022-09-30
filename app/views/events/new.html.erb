@@ -26,7 +26,7 @@
     <!-- date_field,time_fieldはstring classが扱えないのでオプションで初期値を設定 --!>
     <div class="field">
         <%= f.label :日付 %>
-        <%= f.date_field :start_time, value: params["start_time"] %>
+        <%= f.date_field :start_time, value: params["start_time"] if params["start_time"]%>
     </div>
     <div class="field">
         <%= f.label :工事車 %>
@@ -34,11 +34,11 @@
     </div>
     <div class="field">
         <%= f.label :開始時間 %>
-        <%= f.time_field :start, value: params["start"] %>
+        <%= f.time_field :start, value: params["start"] if params["start"]%>
     </div>
     <div class="field">
         <%= f.label :終了時間 %>
-        <%= f.time_field :finish, value: params["finish"] %>
+        <%= f.time_field :finish, value: params["finish"] if params["finish"]%>
     </div>
 
     <!-- 営業担当 --!>
